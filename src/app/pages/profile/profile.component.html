@@ -1,0 +1,70 @@
+<div class="profile-container">
+  <h1>User Profile</h1>
+
+  <form [formGroup]="profileForm" *ngIf="isEditing; else viewMode" (ngSubmit)="saveProfile()">
+    <label>
+      First Name:
+      <input formControlName="firstName" required />
+      <span *ngIf="profileForm.get('firstName')?.hasError('required') && profileForm.get('firstName')?.touched">
+        Full Name is required.
+      </span>
+    </label>
+
+
+    <label>
+      Email:
+      <input formControlName="email" type="email" required />
+      <span *ngIf="profileForm.get('email')?.hasError('required') && profileForm.get('email')?.touched">
+        Email is required.
+      </span>
+      <span *ngIf="profileForm.get('email')?.hasError('email') && profileForm.get('email')?.touched">
+        Enter a valid email address.
+      </span>
+    </label>
+
+    <label>
+      Mobile Number (linked with bank account):
+      <input formControlName="mobile" type="tel" required />
+      <span *ngIf="profileForm.get('mobile')?.hasError('required') && profileForm.get('mobile')?.touched">
+        Mobile number is required.
+      </span>
+      <span *ngIf="profileForm.get('mobile')?.hasError('pattern') && profileForm.get('mobile')?.touched">
+        Mobile number must be 10 digits.
+      </span>
+    </label>
+
+    <label>
+      Aadhar Number:
+      <input formControlName="aadharNumber" type="text" />
+      <span *ngIf="profileForm.get('aadharNumber')?.hasError('pattern') && profileForm.get('aadharNumber')?.touched">
+        Aadhar number must be 12 digits.
+      </span>
+    </label>
+
+    <label>
+      PAN Card Number:
+      <input formControlName="panNumber" type="text" />
+      <span *ngIf="profileForm.get('panNumber')?.hasError('pattern') && profileForm.get('panNumber')?.touched">
+        PAN number format is invalid.(example: ABCDE1234F)
+      </span>
+    </label>
+
+    <button class="save" type="submit" [disabled]="profileForm.invalid">Save</button>
+    <button class="cancel" type="button" (click)="toggleEdit()">Cancel</button>
+  </form>
+
+  <ng-template #viewMode>
+    <div class="profile-info">
+      <p><strong>Full Name:</strong> {{ userProfile.firstName }}</p>
+      <p><strong>Email:</strong> {{ userProfile.email }}</p>
+      <p><strong>Mobile Number:</strong> {{ userProfile.mobile }}</p>
+      <p><strong>Aadhar Number:</strong> {{ userProfile.aadharNumber }}</p>
+      <p><strong>PAN Card Number:</strong> {{ userProfile.panNumber }}</p>
+
+      <button class="edit" (click)="toggleEdit()">Edit Profile</button>
+      <button mat-raised-button color="warn" (click)="goBack()" class="return-btn">
+        Return
+      </button>
+    </div>
+  </ng-template>
+</div>

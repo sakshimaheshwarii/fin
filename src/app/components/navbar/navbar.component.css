@@ -1,0 +1,153 @@
+/* Navbar Styles */
+navbar {
+  background-color: #2980b9; /* Light Mode Background */
+  padding: 10px 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  cursor:pointer;
+}
+
+.navbar-brand {
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Hamburger button styles for mobile */
+.navbar-toggler {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  display: none; /* Hidden by default, shown on mobile */
+}
+
+/* Navbar collapse styles */
+.navbar-collapse {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.navbar-collapse.show {
+  display: flex; /* Display as flex when expanded */
+}
+
+.navbar-nav {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Nav items */
+.nav-item {
+  display: inline;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px 15px;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  text-decoration: underline 10%;
+}
+
+/* Highlight active link */
+.active-link {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+/* Button for 'Add Loan Offer' */
+.btn-add-offer {
+  background-color: #28a745;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.btn-add-offer:hover {
+  background-color: #218838;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .navbar-toggler {
+    display: block; /* Show toggler on mobile */
+  }
+
+  .navbar-collapse {
+    display: none; /* Hide by default */
+    flex-direction: column;
+    width: 100%; /* Full width for mobile */
+  }
+
+  .navbar-collapse.show {
+    display: flex; /* Show when expanded */
+  }
+
+  .navbar-nav {
+    flex-direction: column; /* Stack items vertically */
+    gap: 5px;
+    width: 100%; /* Full width for mobile */
+  }
+
+  .nav-link, .btn-add-offer {
+    width: 100%; /* Full width for links and buttons */
+    text-align: center; /* Center text */
+  }
+}
+
+/* Adjust mat-icon for better alignment */
+.navbar-toggler mat-icon {
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Default Light Mode Styles */
+body.light-mode {
+  background-color: #2980b9; /* Light Mode Background */
+  color: #000000; /* Text color */
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #121212; /* Dark Mode Background */
+  color: #f4f4f4; /* Text color */
+}
+
+/* Navbar Adjustments for Dark Mode */
+.navbar-dark {
+  background-color: #333 !important; /* Dark Mode Navbar */
+}
+
+/* Icon Button Styling */
+.theme-toggle {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Ensure the navbar remains responsive */
+.navbar-nav {
+  flex-direction: row; /* Keep nav items in a row for larger screens */
+}

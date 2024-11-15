@@ -1,0 +1,97 @@
+<div class="new-loan-container">
+  <h2>Start a New Loan Application</h2>
+  <form #loanForm="ngForm" (ngSubmit)="submitLoanApplication(loanForm)" class="loan-form">
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Loan Amount</mat-label>
+      <input
+        matInput
+        placeholder="Enter amount"
+        name="amount"
+        ngModel
+        #amount="ngModel"
+        required
+        type="number"
+        min="1"
+      />
+      <mat-error *ngIf="amount.invalid && amount.touched">
+        Loan amount must be a positive number.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Loan Term (Months)</mat-label>
+      <input
+        matInput
+        placeholder="Enter term in months"
+        name="term"
+        ngModel
+        #term="ngModel"
+        required
+        type="number"
+        min="1"
+      />
+      <mat-error *ngIf="term.invalid && term.touched">
+        Loan term is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Loan Type</mat-label>
+      <mat-select name="type" ngModel #type="ngModel" required>
+        <mat-option value="personal">Personal Loan</mat-option>
+        <mat-option value="home">Home Loan</mat-option>
+        <mat-option value="gold">Gold Loan</mat-option>
+        <mat-option value="vehicle">Vehicle Loan</mat-option>
+        <mat-option value="education">Education Loan</mat-option>
+        <mat-option value="auto">Agricultural Loan</mat-option>
+      </mat-select>
+      <mat-error *ngIf="type.invalid && type.touched">
+        Loan type is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Applicant's Correspondence Address</mat-label>
+      <input
+        matInput
+        placeholder="Enter address"
+        name="address"
+        ngModel
+        #address="ngModel"
+        required
+      />
+      <mat-error *ngIf="address.invalid && address.touched">
+        Address is required.
+      </mat-error>
+    </mat-form-field>
+    <div class="full-width">
+      <label>Applicant's Collateral File</label>
+      <input
+        type="file"
+        (change)="onFileSelected($event)"
+        accept=".pdf, .png, .jpg, .jpeg, *"
+        required
+      />
+      <mat-error *ngIf="!collateralDocument && loanForm.submitted">
+        Collateral file is required.
+      </mat-error>
+    </div>
+
+    <div class="captcha-container">
+      <label>Solve: {{ captchaQuestion }}</label>
+      <input type="number" [(ngModel)]="userCaptchaAnswer" name="captchaAnswer" required />
+      <button mat-icon-button type="button" (click)="generateCaptcha()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+      <mat-error *ngIf="captchaError">
+        Incorrect captcha. Please try again.
+      </mat-error>
+    </div>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="loanForm.invalid || captchaError || !collateralDocument">
+      Submit Application
+    </button>
+    <button mat-raised-button color="warn" (click)="goBack()">Return</button>
+  </form>
+</div>

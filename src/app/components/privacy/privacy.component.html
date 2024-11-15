@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy and Policy - ResolveX</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        header, footer {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            padding: 10px 0;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        h1, h2 {
+            color: var(--heading-color);
+        }
+        section {
+            margin-bottom: 20px;
+            background-color: var(--section-bg);
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        .toggle-content {
+            display: none;
+        }
+        .toggle-button {
+            cursor: pointer;
+            color: var(--link-color);
+        }
+
+        /* Light Theme Variables */
+        :root {
+            --header-bg: #333;
+            --header-text: #fff;
+            --heading-color: #333;
+            --section-bg: #fff;
+            --link-color: #007BFF;
+            --body-bg: #f4f4f4;
+            --text-color: #000;
+        }
+
+        /* Dark Theme Variables */
+        [data-theme="dark"] {
+            --header-bg: #1a1a1a;
+            --header-text: #fff;
+            --heading-color: #fff;
+            --section-bg: #333;
+            --link-color: #1e90ff;
+            --body-bg: #000;
+            --text-color: #ddd;
+        }
+
+        /* Apply Theme Variables */
+        body {
+            background-color: var(--body-bg);
+            color: var(--text-color);
+        }
+
+        /* Toggle Switch Styles */
+        .theme-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .theme-toggle input {
+            display: none;
+        }
+
+        .theme-toggle label {
+            cursor: pointer;
+        }
+
+        .theme-toggle span {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Privacy and Policy for ResolveX</h1>
+    </header>
+
+    <div class="theme-toggle">
+        <span>🌞</span>
+        <label>
+            <input type="checkbox" id="themeSwitch">
+            <span>🌙</span>
+        </label>
+    </div>
+
+    <main>
+        <section>
+            <h2>Introduction</h2>
+            <p>At ResolveX, we are committed to protecting your privacy. This policy outlines how we collect, use, and safeguard your information.</p>
+        </section>
+        <section>
+            <h2 class="toggle-button">Information We Collect</h2>
+            <div class="toggle-content">
+                <p>We collect personal information such as your name, contact details, and financial information necessary for loan origination.</p>
+            </div>
+        </section>
+        <section>
+            <h2 class="toggle-button">How We Use Your Information</h2>
+            <div class="toggle-content">
+                <p>Your information is used to process loan applications, verify identity, and improve our services.</p>
+            </div>
+        </section>
+        <section>
+            <h2 class="toggle-button">Data Security</h2>
+            <div class="toggle-content">
+                <p>We implement robust security measures to protect your data from unauthorized access and breaches.</p>
+            </div>
+        </section>
+        <section>
+            <h2 class="toggle-button">Your Rights</h2>
+            <div class="toggle-content">
+                <p>You have the right to access, correct, or delete your personal information at any time.</p>
+            </div>
+        </section>
+        <section>
+            <h2 class="toggle-button">Changes to This Policy</h2>
+            <div class="toggle-content">
+                <p>We may update this policy periodically. We will notify you of any significant changes.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const themeSwitch = document.getElementById('themeSwitch');
+        const toggleButtons = document.querySelectorAll('.toggle-button');
+
+        // Theme Toggle Logic
+        themeSwitch.addEventListener('change', () => {
+            document.body.setAttribute('data-theme', themeSwitch.checked ? 'dark' : '');
+        });
+
+        // Section Toggle Logic
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+</html>

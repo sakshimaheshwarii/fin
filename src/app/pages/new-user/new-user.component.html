@@ -1,0 +1,124 @@
+<mat-card class="register-card">
+  <mat-card-header>
+    <mat-card-title>Create a New Account</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm)" novalidate>
+
+      <!-- Full Name Field -->
+      <mat-form-field appearance="fill">
+        <mat-label>Full Name</mat-label>
+        <input
+          matInput
+          [(ngModel)]="user.name"
+          name="name"
+          required
+          #name="ngModel"
+          pattern="^[a-zA-Z ]+$"
+        />
+        <mat-error *ngIf="name.errors?.['required'] && name.touched">
+          Full Name is required.
+        </mat-error>
+        <mat-error *ngIf="name.errors?.['pattern'] && name.touched">
+          Full Name must contain only alphabets.
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Username Field -->
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input
+          matInput
+          [(ngModel)]="user.username"
+          name="username"
+          required
+          #username="ngModel"
+          pattern="^[a-zA-Z0-9._]+$"
+        />
+        <mat-error *ngIf="username.errors?.['required'] && username.touched">
+          Username is required.
+        </mat-error>
+        <mat-error *ngIf="username.errors?.['pattern'] && username.touched">
+          Username can only contain letters, numbers, dots, and underscores.
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Email Field -->
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          [(ngModel)]="user.email"
+          name="email"
+          type="email"
+          required
+          #email="ngModel"
+        />
+        <mat-error *ngIf="email.errors?.['required'] && email.touched">
+          Email is required.
+        </mat-error>
+        <mat-error *ngIf="email.errors?.['email'] && email.touched">
+          Enter a valid email address.
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Password Field -->
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          [(ngModel)]="user.password"
+          name="password"
+          type="password"
+          required
+          #password="ngModel"
+          minlength="6"
+          maxlength="15"
+        />
+        <mat-error *ngIf="password.errors?.['required'] && password.touched">
+          Password is required.
+        </mat-error>
+        <mat-error *ngIf="password.errors?.['minlength'] && password.touched">
+          Password must be at least 6 characters long.
+        </mat-error>
+        <mat-error *ngIf="password.errors?.['maxlength'] && password.touched">
+          Password must not exceed 15 characters.
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Confirm Password Field -->
+      <mat-form-field appearance="fill">
+        <mat-label>Confirm Password</mat-label>
+        <input
+          matInput
+          [(ngModel)]="user.confirmPassword"
+          name="confirmPassword"
+          type="password"
+          required
+          #confirmPasswordField="ngModel"
+        />
+        <mat-error *ngIf="confirmPasswordField.errors?.['required'] && confirmPasswordField.touched">
+          Confirm Password is required.
+        </mat-error>
+        <mat-error *ngIf="confirmPasswordMismatch && confirmPasswordField.touched">
+          Passwords do not match.
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Buttons -->
+      <div class="button-group">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="registerForm.invalid || confirmPasswordMismatch">
+          Register
+        </button>
+        <button mat-raised-button color="warn" type="button" (click)="goBack()">Return</button>
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-footer>
+    <a routerLink="/login">Already have an account? Login here</a>
+  </mat-card-footer>
+</mat-card>

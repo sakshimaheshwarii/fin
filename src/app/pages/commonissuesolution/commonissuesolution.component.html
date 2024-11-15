@@ -1,0 +1,42 @@
+<div class="common-issue-resolution-container">
+  <h2>{{ issueType | titlecase }} Resolution</h2>
+
+  <div *ngIf="issueType === 'disapproved'">
+    <p>Your loan application has been disapproved. Please ensure your credit score is within the acceptable range and that all information provided is accurate.</p>
+    <h4>Steps to Resolve:</h4>
+    <ol>
+      <li>Review your credit report for any discrepancies.</li>
+      <li>Check the details provided in your loan application.</li>
+      <li>Contact your loan officer for further clarification.</li>
+    </ol>
+  </div>
+
+  <div *ngIf="issueType === 'latePayment'">
+    <p>If you have made a late payment, contact your loan officer to discuss potential payment plans.</p>
+    <h4>Steps to Resolve:</h4>
+    <ol>
+      <li>Make the payment as soon as possible.</li>
+      <li>Contact customer support to discuss your situation.</li>
+    </ol>
+  </div>
+
+  <div *ngIf="issueType === 'missingDocs'">
+    <p>Ensure that all required documents have been submitted. Check your email for any communication from us.</p>
+    <h4>Steps to Resolve:</h4>
+    <ol>
+      <li>Gather the required documents.</li>
+      <li>Submit them via email or through your account.</li>
+    </ol>
+  </div>
+
+  <div *ngIf="issueType === 'other'">
+    <p>Please provide detailed information about your issue in the main resolution form.</p>
+    <h4>Steps to Resolve:</h4>
+    <ol>
+      <li>Describe your issue clearly.</li>
+      <li>Submit your issue through the provided form.</li>
+    </ol>
+  </div>
+
+  <button mat-raised-button (click)="goBack()">Back</button>
+</div>

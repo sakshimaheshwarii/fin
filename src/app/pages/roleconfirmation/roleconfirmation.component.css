@@ -1,0 +1,172 @@
+/* Dialog Container */
+.dialog-container {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+  animation: slideIn 0.3s ease-out;
+  transform-origin: center;
+}
+
+/* Title Styles */
+[mat-dialog-title] {
+  color: #2c3e50;
+  margin: 0 0 20px 0;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+}
+
+[mat-dialog-title]::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #3498db;
+  margin: 8px auto 0;
+  border-radius: 2px;
+  animation: widthGrow 0.4s ease-out 0.3s forwards;
+  transform-origin: center;
+  transform: scaleX(0);
+}
+
+/* Content Styles */
+[mat-dialog-content] {
+  margin: 20px 0;
+}
+
+[mat-dialog-content] p {
+  color: #34495e;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: center;
+  margin: 0;
+  opacity: 0;
+  animation: fadeIn 0.3s ease-out 0.2s forwards;
+}
+
+/* Actions Container */
+[mat-dialog-actions] {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Button Styles */
+[mat-button] {
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 100px;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* Primary Button */
+[color="primary"] {
+  background: #3498db;
+  color: white;
+  animation: buttonSlideUp 0.3s ease-out 0.4s forwards;
+}
+
+[color="primary"]:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+/* Secondary Button */
+[mat-button]:not([color="primary"]) {
+  background: #ecf0f1;
+  color: #34495e;
+  animation: buttonSlideUp 0.3s ease-out 0.5s forwards;
+}
+
+[mat-button]:not([color="primary"]):hover {
+  background: #bdc3c7;
+  transform: translateY(-2px);
+}
+
+/* Overlay Background (Add to parent container) */
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes widthGrow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes buttonSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+  .dialog-container {
+    padding: 20px;
+    width: 85%;
+  }
+
+  [mat-dialog-title] {
+    font-size: 20px;
+  }
+
+  [mat-dialog-content] p {
+    font-size: 16px;
+  }
+
+  [mat-button] {
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+}

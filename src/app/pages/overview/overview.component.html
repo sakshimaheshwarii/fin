@@ -1,0 +1,39 @@
+<div class="overview-container">
+  <h1>Admin Dashboard Overview</h1><br>
+  <p>
+    Welcome to the admin overview.<br> Here you can get insights into the platform's
+    activity, user engagement, and key metrics.
+  </p><br><br>
+
+  <div class="stats">
+    <div class="stat-box">
+      <h2>Total Users</h2>
+      <p>{{ totalUsers }}</p>
+    </div>
+    <div class="stat-box">
+      <h2>Loan Applications</h2>
+      <p>{{ loanApplications }}</p>
+    </div>
+    <div class="stat-box">
+      <h2>Pending Approvals</h2>
+      <p>{{ pendingApprovals }}</p>
+    </div>
+    <div class="stat-box">
+      <h2>Resolved Issues</h2>
+      <p>{{ resolvedIssues }}</p>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button mat-raised-button color="primary" (click)="navigateToReports()">
+      View Detailed Reports
+    </button>
+    <button mat-raised-button color="accent" (click)="manageUsers()">
+      Manage Users
+    </button>
+  </div>
+
+  <button mat-raised-button color="warn" class="return-btn" (click)="goBack()">
+    Return to Admin Dashboard
+  </button>
+</div>

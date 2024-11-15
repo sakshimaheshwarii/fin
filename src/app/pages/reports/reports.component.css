@@ -1,0 +1,36 @@
+.reports-container {
+  padding: 30px;
+  background-color: #f7f8fc;
+  min-height: 100vh;
+  text-align: center;
+}
+
+h1 {
+  color: #004080;
+  margin-bottom: 20px;
+}
+
+.filters {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+input[type="date"] {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+table {
+  margin: 0 auto;
+  width: 80%;
+  margin-top: 20px;
+}
+
+.return-btn {
+  margin-top: 30px;
+}

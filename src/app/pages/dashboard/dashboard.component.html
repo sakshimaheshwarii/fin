@@ -1,0 +1,109 @@
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>Welcome to Your Dashboard</h1>
+
+    <!-- Notifications Icon with Dropdown -->
+    <div class="notifications">
+      <button mat-icon-button [matMenuTriggerFor]="notificationMenu">
+        <mat-icon>notifications</mat-icon>
+        <span class="notification-badge" *ngIf="unreadNotifications > 0">
+          {{ unreadNotifications }}
+        </span>
+      </button>
+
+      <mat-menu #notificationMenu="matMenu">
+        <ng-container *ngIf="notifications.length; else noNotifications">
+          <button mat-menu-item *ngFor="let notification of notifications">
+            <mat-icon color="primary">{{ notification.icon }}</mat-icon>
+            <span>{{ notification.message }}</span>
+          </button>
+        </ng-container>
+
+        <ng-template #noNotifications>
+          <button mat-menu-item disabled>No new notifications</button>
+        </ng-template>
+      </mat-menu>
+    </div>
+  </header>
+
+  <p style="font-size: 17px;">Manage your loan workflows efficiently.</p>
+
+  <div class="action-cards">
+    <div class="action-card" (click)="startNewLoan()">
+      <mat-icon>add_circle</mat-icon>
+      <h2>Start a New Loan Application</h2>
+      <p>Begin your journey to secure funding for your needs.</p>
+    </div>
+
+    <div class="action-card" (click)="trackLoanStatus()">
+      <mat-icon>track_changes</mat-icon>
+      <h2>Track Loan Status</h2>
+      <p>Stay updated on your loan's progress and status.</p>
+    </div>
+
+    <div class="action-card" (click)="viewLoanHistory()">
+      <mat-icon>history</mat-icon>
+      <h2>View Loan History</h2>
+      <p>Review your past loan applications and outcomes.</p>
+    </div>
+    <div class="action-card" (click)="resolveIssues()">
+      <mat-icon>help_outline</mat-icon>
+      <h2>Resolve Issues</h2>
+      <p>Get assistance with loan disapprovals and more.</p>
+    </div>
+
+    <div class="action-card" (click)="openLoanCalculator()">
+      <mat-icon>calculate</mat-icon>
+      <h2>Loan Calculator</h2>
+      <p>Calculate your potential loan repayments.</p>
+    </div>
+    <div class="action-card" (click)="checkScore()">
+      <mat-icon>assessment</mat-icon>
+      <h2>Get your Cibil Score</h2>
+      <p>Check your creditworthiness and get a score.</p>
+    </div>
+  </div>
+
+  <!-- loan-dashboard.component.html -->
+<div class="dashboard-container1">
+  <!-- Recommendations Section -->
+  <div class="card recommendations">
+    <h2><i class="fas fa-handshake"></i> Recommended Loan Aggregators</h2>
+    <p>Find the best loan offers from trusted platforms:</p>
+    <div class="aggregator-grid">
+      <a *ngFor="let aggregator of loanAggregators"
+         [href]="aggregator.url"
+         target="_blank"
+         class="aggregator-card">
+        <h3>{{aggregator.name}}</h3>
+        <p>{{aggregator.description}}</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- Recent Activities Section -->
+  <div class="card activities">
+    <h2><i class="fas fa-clock"></i> Recent Activities</h2>
+    <ul>
+      <li *ngFor="let activity of recentActivities">{{activity}}</li>
+    </ul>
+  </div>
+
+  <!-- Financial Insights Section -->
+  <div class="card insights">
+    <h2><i class="fas fa-lightbulb"></i> Financial Insights</h2>
+    <div class="tips">
+      <p *ngFor="let tip of financialTips">{{tip}}</p>
+    </div>
+  </div>
+
+  <!-- Issues Section -->
+  <div class="card issues">
+    <h2><i class="fas fa-exclamation-triangle"></i> Potential Issues</h2>
+    <p>Your loan application may be disapproved due to:</p>
+    <ul>
+      <li *ngFor="let issue of potentialIssues">{{issue}}</li>
+    </ul>
+    <p class="help-text">If you need assistance, please contact our support team.</p>
+  </div>
+</div>

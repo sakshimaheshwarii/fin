@@ -1,0 +1,18 @@
+<div class="page" style="overflow-y: scroll;max-height:100vh;
+  height: auto;padding-bottom: 130px;">
+<div class="service-cards">
+  <div *ngFor="let service of services" class="service-card">
+    <img [src]="service.icon" [alt]="service.name" (error)="onImageError($event)" />
+    <h3>{{ service.name }}</h3>
+    <p>{{ service.description }}</p>
+    <button (click)="learnMore(service)">Learn More</button>
+  </div>
+</div>
+</div>
+
+<!-- Details Box - Displayed only when a service is selected -->
+<div *ngIf="selectedService" class="details-box">
+  <h3>{{ selectedService.name }} Details</h3>
+  <p>{{ selectedService.details }}</p>
+  <button (click)="closeDetails()">Close</button>
+</div>

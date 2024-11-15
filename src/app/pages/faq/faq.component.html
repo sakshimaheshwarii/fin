@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
+
+<div class="faq-container">
+  <h2 class="faq-heading">Frequently Asked Questions</h2>
+
+  <div class="accordion w-100" id="faqAccordion">
+    <div class="accordion-item" *ngFor="let faq of faqs; let i = index">
+      <h2 class="accordion-header" [id]="'heading' + i">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          (click)="toggleAnswer(i)"
+          [attr.aria-expanded]="activeIndex === i"
+          [attr.aria-controls]="'collapse' + i">
+          {{ faq.question }}
+        </button>
+      </h2>
+      <div
+        [id]="'collapse' + i"
+        class="accordion-collapse collapse"
+        [class.show]="activeIndex === i"
+        [attr.aria-labelledby]="'heading' + i"
+        data-mdb-parent="#faqAccordion">
+        <div class="accordion-body">
+          <strong>{{ faq.answer }}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

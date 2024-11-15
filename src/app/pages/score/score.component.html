@@ -1,0 +1,77 @@
+<div class="cibil-container">
+  <h1>CIBIL Score Data Table</h1>
+
+  <!-- CIBIL Score Table -->
+  <table class="cibil-score-table">
+    <thead>
+      <tr>
+        <th>Score Range</th>
+        <th>Status</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background-color: rgb(228, 81, 81);">
+        <td>300 - 549</td>
+        <td>Bad</td>
+        <td>You may face difficulties getting a loan</td>
+      </tr>
+      <tr style="background-color: orange;">
+        <td>550 - 649</td>
+        <td>Poor</td>
+        <td>Fairly low approval chances</td>
+      </tr>
+      <tr style="background-color: yellow;">
+        <td>650 - 699</td>
+        <td>Fair</td>
+        <td>Moderate chance of approval</td>
+      </tr>
+      <tr style="background-color: rgb(115, 223, 115);">
+        <td>700 - 749</td>
+        <td>Good</td>
+        <td>Higher approval chances</td>
+      </tr>
+      <tr style="background-color: rgb(126, 191, 221);">
+        <td>750 - 900</td>
+        <td>Excellent</td>
+        <td>Most likely to be approved</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button (click)="getCibilScore()">Get Your CIBIL Score Instantly</button>
+
+  <div *ngIf="showResultBox" class="result-box">
+    <h2>Your CIBIL Score: {{ Score }}</h2>
+    <p>Status: {{ Status }}</p>
+  </div>
+
+  <div *ngIf="step === 1 && showPersonalInfo" class="form-step">
+    <h3>Step 1: Bank Details</h3>
+    <form [formGroup]="userForm" (ngSubmit)="nextStep()">
+      <label for="bankName">Select Bank:</label>
+      <select formControlName="bankName" required>
+        <option value="">Select your bank</option>
+        <option *ngFor="let bank of bankNames" [value]="bank">{{ bank }}</option>
+      </select>
+
+      <label for="accountNumber">Account Number:</label>
+      <input type="text" formControlName="accountNumber" placeholder="Enter your account number" />
+
+      <label for="mobileNumber">Mobile Number:</label>
+      <input type="text" formControlName="mobileNumber" placeholder="Enter your mobile number" />
+
+      <button type="submit" [disabled]="userForm.invalid">Next</button>
+    </form>
+  </div>
+
+  <div *ngIf="step === 2" class="form-step">
+    <h3>Step 2: Enter OTP</h3>
+    <form [formGroup]="userForm" (ngSubmit)="fetchDetails()">
+      <label>OTP:</label>
+      <input type="text" formControlName="otp" />
+
+      <button type="submit" [disabled]="userForm.get('otp')?.invalid">Fetch Account Details</button>
+    </form>
+  </div>
+</div>

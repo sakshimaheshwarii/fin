@@ -1,0 +1,71 @@
+/* Logout container styling */
+.logout-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  gap: 15px;
+}
+
+.action-button {
+  width: 40%;
+  font-size: 18px;
+}
+
+/* Feedback container styling */
+.feedback-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  width: 400px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-container h2 {
+  margin-bottom: 20px;
+}
+
+/* Star rating styling */
+.star-rating {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.star-icon {
+  font-size: 27px;
+  cursor: pointer;
+  color: #ffc107;
+  transition: transform 0.2s;
+}
+
+.star-icon:hover {
+  transform: scale(1.2);
+}
+
+/* Textarea styling */
+textarea {
+  width: 100%;
+  min-height: 100px;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+
+/* Submit button styling */
+.submit-button {
+  width: 100%;
+  font-size: 18px;
+}
+
+/* Submission message styling */
+.submission-message {
+  text-align: center;
+  margin-top: 50px;
+}

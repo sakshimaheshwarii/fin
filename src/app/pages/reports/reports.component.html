@@ -1,0 +1,39 @@
+<div class="reports-container">
+  <h1>Admin Reports</h1>
+
+  <div class="filters">
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate" [(ngModel)]="startDate" />
+
+    <label for="endDate">End Date:</label>
+    <input type="date" id="endDate" [(ngModel)]="endDate" />
+
+    <button mat-raised-button color="primary" (click)="generateReport()">
+      Generate Report
+    </button>
+  </div>
+
+  <table mat-table [dataSource]="filteredEntries" class="mat-elevation-z8">
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let entry">{{ entry.date }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Description</th>
+      <td mat-cell *matCellDef="let entry">{{ entry.description }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef>Amount</th>
+      <td mat-cell *matCellDef="let entry">{{ entry.amount | currency }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['date', 'description', 'amount']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['date', 'description', 'amount'];"></tr>
+  </table>
+
+  <button mat-raised-button color="warn" (click)="goBack()" class="return-btn">
+    Return to Admin Dashboard
+  </button>
+</div>

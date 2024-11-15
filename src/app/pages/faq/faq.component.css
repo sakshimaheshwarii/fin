@@ -1,0 +1,124 @@
+:root {
+  --bg-color: #2980b9;
+  --text-color: #333;
+  --border-color: #ccc;
+  --question-color: #2c3e50;
+  --answer-bg-color: #f9f9f9;
+  --button-color: #3498db;
+}
+
+.dark-mode {
+  --bg-color: #2c2c2c;
+  --text-color: #ecf0f1;
+  --border-color: #444;
+  --question-color: #ecf0f1;
+  --answer-bg-color: #3a3a3a;
+  --button-color: #2980b9;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #2980b9;
+  transition: background-color 0.3s ease;
+  overflow-y: scroll;
+  height: auto;
+  max-height: 100vh;
+  /* padding-bottom: 1000px !important; */
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background-color: var(--bg-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow-y: auto;
+  transition: background-color 0.3s ease;
+  border: 1px solid white;
+}
+
+.faq-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* margin-bottom: 15px; */
+  border-bottom: 1px solid var(--border-color);
+  /* padding: 3px 0; */
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  /* gap: 4px; */
+  font-weight: bold;
+  color: var(--question-color);
+  cursor: pointer;
+  flex-grow: 1;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  background-color: var(--answer-bg-color);
+  color: var(--text-color);
+  /* padding: 0 3px; */
+  transition: max-height 0.3s ease-out, padding 0.3s;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 200px; /* Adjust as needed */
+  /* padding: 4px; */
+}
+
+button.toggle-btn {
+  width: 30px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--button-color);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+button.toggle-btn:hover {
+  background-color: var(--button-color);
+}
+
+@media (max-width: 600px) {
+  .faq-container {
+    width: 90%;
+    padding: 2px;
+  }
+}
+
+
+
+.accordion-button {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.accordion-body {
+  font-size: 0.95rem;
+}
+
+.accordion-item {
+  margin-bottom: 4px;
+  margin: 3px 0;
+
+}
+
+.faq-heading {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+

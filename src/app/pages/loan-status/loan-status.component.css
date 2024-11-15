@@ -1,0 +1,34 @@
+.loan-status-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+
+.status-result {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #4caf50;
+  border-radius: 5px;
+  background-color: #e8f5e9;
+}
+
+.error-message {
+  color: #d32f2f;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}

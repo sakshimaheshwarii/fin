@@ -1,0 +1,89 @@
+.profile-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 30px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  transition: box-shadow 0.3s ease;
+  margin-top: 5%;
+}
+
+.profile-container:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  font-size: 24px;
+}
+
+label {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #555;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #2196f3;
+  outline: none;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+}
+
+button.save {
+  background-color: #4caf50;
+  color: white;
+}
+
+button.save:hover {
+  background-color: #45a049;
+}
+
+button.cancel {
+  background-color: #f44336;
+  color: white;
+}
+
+button.cancel:hover {
+  background-color: #e53935;
+}
+
+button.edit {
+  background-color: #2196f3;
+  color: white;
+}
+
+button.edit:hover {
+  background-color: #1e88e5;
+}
+
+.profile-info p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #333;
+}

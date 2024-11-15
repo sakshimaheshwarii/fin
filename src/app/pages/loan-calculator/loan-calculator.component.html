@@ -1,0 +1,74 @@
+<div class="loan-calculator-container">
+  <h2 class="title">Loan EMI Calculator</h2>
+
+  <div class="form-container">
+    <mat-form-field appearance="outline" class="input-field">
+      <mat-label>Loan Amount</mat-label>
+      <input matInput type="number" [(ngModel)]="amount" placeholder="Enter Loan Amount in Rs." required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="input-field">
+      <mat-label>Interest Rate (%)</mat-label>
+      <input matInput type="number" [(ngModel)]="rate" placeholder="Enter Interest Rate" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="input-field">
+      <mat-label>Loan Term (Months)</mat-label>
+      <input matInput type="number" [(ngModel)]="term" placeholder="Enter Loan Term in Months" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="input-field">
+      <mat-label>Payment Frequency</mat-label>
+      <mat-select [(ngModel)]="frequency" required>
+        <mat-option value="monthly">Monthly</mat-option>
+        <mat-option value="quarterly">Quarterly</mat-option>
+        <mat-option value="half-yearly">Half-Yearly</mat-option>
+        <mat-option value="yearly">Yearly</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="button-group">
+      <button mat-raised-button color="primary" (click)="calculateEMI()">Calculate EMI</button>
+      <button mat-raised-button color="warn" (click)="goBack()">Return</button>
+    </div>
+
+    <button
+      mat-raised-button color="accent"
+      *ngIf="emi && schedule.length > 0"
+      (click)="showSchedule = !showSchedule">
+      {{ showSchedule ? 'Hide' : 'Show' }} EMI Schedule
+    </button>
+
+    <div *ngIf="emi" class="emi-result">
+      <h3>Your {{ frequency }} EMI: ₹{{ emi | number:'1.2-2' }}</h3>
+    </div>
+  </div>
+
+  <div *ngIf="showSchedule" class="schedule-container">
+    <h3>EMI Schedule</h3>
+    <table mat-table [dataSource]="schedule" class="mat-elevation-z8">
+      <ng-container matColumnDef="month">
+        <th mat-header-cell *matHeaderCellDef> Month </th>
+        <td mat-cell *matCellDef="let emi"> {{ emi.month }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="principal">
+        <th mat-header-cell *matHeaderCellDef> Principal </th>
+        <td mat-cell *matCellDef="let emi"> ₹{{ emi.principal | number:'1.2-2' }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="interest">
+        <th mat-header-cell *matHeaderCellDef> Interest </th>
+        <td mat-cell *matCellDef="let emi"> ₹{{ emi.interest | number:'1.2-2' }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef> Total EMI </th>
+        <td mat-cell *matCellDef="let emi"> ₹{{ emi.total | number:'1.2-2' }} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>

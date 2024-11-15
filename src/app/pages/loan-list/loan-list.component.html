@@ -1,0 +1,25 @@
+<!-- src/app/components/loan-list/loan-list.component.html -->
+<div *ngIf="loading">Loading approved loans...</div>
+
+<div *ngIf="!loading && loans.length === 0">No approved loans found.</div>
+
+<table *ngIf="!loading && loans.length > 0">
+  <thead>
+    <tr>
+      <th>Loan ID</th>`
+      <th>Borrower Name</th>
+      <th>Amount</th>
+      <th>Interest Rate</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let loan of loans">
+      <td>{{ loan.id }}</td>
+      <td>{{ loan.borrower }}</td>
+      <td>{{ loan.amount }}</td>
+      <td>{{ loan.interestRate }}%</td>
+      <td>{{ loan.status }}</td>
+    </tr>
+  </tbody>
+</table>

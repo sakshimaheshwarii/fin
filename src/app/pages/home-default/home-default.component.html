@@ -1,0 +1,49 @@
+<div class="homepage-container">
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <div class="container">
+      <h1 class="hero-title" [@fadeInDown]>Welcome to ResolveX</h1>
+      <p class="hero-subtitle" [@fadeInUp]>
+        Empowering your financial future with personalized loan and financial solutions.
+      </p>
+    </div>
+  </div>
+
+  <!-- Image Carousel -->
+  <div class="custom-carousel" id="imageCarousel">
+    <div class="carousel-inner">
+      <div class="carousel-item" *ngFor="let image of carouselImages; let i = index" [class.active]="i === currentSlide">
+        <img [src]="image.src" [alt]="image.alt" [@carouselAnimation]>
+      </div>
+    </div>
+    <button class="carousel-control prev" (click)="prevSlide()">❮</button>
+    <button class="carousel-control next" (click)="nextSlide()">❯</button>
+  </div>
+
+  <!-- Features Section -->
+  <div class="features-section">
+    <div class="container">
+      <h2 class="section-title">What We Do</h2>
+      <p class="about-description">
+        At ResolveX, we specialize in providing comprehensive financial services designed to help you achieve your goals.
+        From personalized loan consulting to strategic financial planning and debt management, our goal is to guide you
+        through each step of your financial journey with ease and confidence.
+      </p><br>
+      <div class="row">
+        <div class="col-md-4" *ngFor="let feature of features">
+          <div class="feature-box">
+            <div class="feature-box-inner">
+              <div class="feature-box-front">
+                <mat-icon>{{ feature.icon }}</mat-icon>
+                <h2>{{ feature.title }}</h2>
+              </div>
+              <div class="feature-box-back">
+                <h2>{{ feature.title }}</h2>
+                <p>{{ feature.description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

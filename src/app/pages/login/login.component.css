@@ -1,0 +1,237 @@
+/* Main Container */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+}
+
+/* Card Styles */
+.login-card {
+  max-width: 400px;
+  width: 100%;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  background: white;
+  animation: slideUp 0.5s ease-out;
+}
+
+/* Header Styles */
+.login-card h2 {
+  color: #2c3e50;
+  font-size: 28px;
+  font-weight: 600;
+  text-align: center;
+  margin: 0 0 32px 0;
+  position: relative;
+}
+
+.login-card h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #3498db;
+  margin: 12px auto 0;
+  border-radius: 2px;
+  animation: widthGrow 0.4s ease-out 0.5s forwards;
+  transform-origin: center;
+  transform: scaleX(0);
+}
+
+/* Form Field Styles */
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.full-width:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.full-width:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+/* Override Material Design Styles */
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+  padding-bottom: 1.25em;
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+::ng-deep .mat-form-field-appearance-legacy.mat-focused .mat-form-field-underline {
+  background-color: #3498db;
+}
+
+/* Button Group */
+.button-group {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out 0.4s forwards;
+}
+
+/* Button Styles */
+.button-group button {
+  flex: 1;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+/* Primary Button */
+button[color="primary"] {
+  background: #3498db;
+}
+
+button[color="primary"]:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+/* Warning Button */
+button[color="warn"] {
+  background: #e74c3c;
+}
+
+button[color="warn"]:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+}
+
+/* Forgot Password Link */
+.forgot-password-link {
+  display: block;
+  text-align: center;
+  margin-top: 24px;
+  color: #3498db;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out 0.5s forwards;
+}
+
+.forgot-password-link:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+/* Image Container (commented but styled for future use) */
+.image-container {
+  display: none;
+  max-width: 500px;
+  padding: 20px;
+}
+
+.login-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes widthGrow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .login-card {
+    padding: 48px;
+  }
+
+  .image-container {
+    display: block;
+  }
+
+  .login-container {
+    gap: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 24px;
+  }
+
+  .login-card h2 {
+    font-size: 24px;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .button-group button {
+    width: 100%;
+  }
+}
+/* Plain CSS Example for 12 particles */
+.particle:nth-child(1) {
+  width: 20px;
+  height: 20px;
+  animation: float1 15s infinite linear, fadeInOut 5s infinite ease-in-out;
+}
+
+/* Repeat this for other particles, adjusting size and animation duration */
+
+.particle:nth-child(2) {
+  width: 25px;
+  height: 25px;
+  animation: float2 18s infinite linear, fadeInOut 6s infinite ease-in-out;
+}
+
+/* Keyframes */
+@keyframes float1 {
+  from {
+    transform: translate(10vw, 10vh) rotate(0deg);
+  }
+  to {
+    transform: translate(50vw, 50vh) rotate(360deg);
+  }
+}
+
+/* Repeat similar keyframes for other particles */

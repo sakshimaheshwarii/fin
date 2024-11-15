@@ -1,0 +1,30 @@
+<div class="loan-status-container">
+  <h2>Track Loan Status</h2>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Enter Loan Application ID</mat-label>
+    <input matInput placeholder="Enter Loan Application ID" [(ngModel)]="applicationId" />
+  </mat-form-field>
+
+  <div class="button-group">
+    <button mat-raised-button color="primary" (click)="checkStatus()" [disabled]="loading">
+      Check Status
+    </button>
+    <button mat-raised-button color="warn" (click)="goBack()">Return</button>
+  </div>
+
+  <!-- Loading Indicator -->
+  <mat-spinner *ngIf="loading" diameter="30"></mat-spinner>
+
+  <!-- Status Display -->
+  <div *ngIf="loanStatus" class="status-result">
+    <h3>Status: {{ loanStatus }}</h3>
+    <p *ngIf="loanDetails">Details: {{ loanDetails }}</p>
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="error-message">
+    <mat-icon color="warn">error</mat-icon>
+    <span>{{ errorMessage }}</span>
+  </div>
+</div>

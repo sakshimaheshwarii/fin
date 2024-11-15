@@ -1,0 +1,25 @@
+<div class="logout-container">
+  <h2>Are you sure you want to log out?</h2>
+  <button mat-raised-button color="primary" class="action-button" (click)="confirmLogout()">Yes</button>
+  <button mat-raised-button color="warn" class="action-button" (click)="goToHome()">No</button>
+</div>
+
+<!-- Feedback Dialog -->
+<ng-template #feedbackDialog>
+  <div class="feedback-container">
+    <h2>We'd love your feedback!</h2>
+    <div class="star-rating">
+      <span *ngFor="let star of stars; let i = index" (click)="rate(i + 1)">
+        <mat-icon class="star-icon">{{ i < rating ? 'star' : 'star_border' }}</mat-icon>
+      </span>
+    </div>
+    <textarea [(ngModel)]="feedback" placeholder="Your feedback..."></textarea>
+    <button mat-raised-button color="primary" class="submit-button" (click)="submitFeedback()">Submit</button>
+  </div>
+</ng-template>
+
+<!-- Submission Success -->
+<div *ngIf="submitted" class="submission-message">
+  <h2>Thank you for your feedback!</h2>
+  <button mat-raised-button color="primary" (click)="goToWelcome()">Visit Again</button>
+</div>

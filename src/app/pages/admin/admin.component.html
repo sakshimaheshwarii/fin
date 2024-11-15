@@ -1,0 +1,51 @@
+<div class="admin-container">
+    <header class="admin-header">
+      <h1>Loan Origination Platform - Admin Dashboard</h1>
+      <div class="header-actions">
+        <button class="logout-btn" (click)="logout()">Logout</button>
+      </div>
+    </header>
+
+    <nav class="sidebar">
+      <ul>
+        <li (click)="navigateTo('admin/overview')">Overview</li>
+        <li (click)="navigateTo('admin/user-management')">User Management</li>
+        <li (click)="navigateTo('admin/loan-applications')">File a New Loan Application</li>
+        <li (click)="navigateTo('admin/pending-approvals')">Pending Approvals</li>
+        <li (click)="navigateTo('admin/loan-list')">Approved Loans</li>
+        <li (click)="navigateTo('admin/reports')">Reports & Analytics</li>
+        <li (click)="navigateTo('admin/settings')">Settings</li>
+      </ul>
+    </nav>
+
+    <main class="dashboard-content">
+      <section class="dashboard-overview">
+        <div class="card">
+          <h2>Total Loans Issued</h2>
+          <p>{{ totalLoans }}</p>
+        </div>
+        <div class="card">
+          <h2>Pending Approvals</h2>
+          <p>{{ pendingApprovals }}</p>
+        </div>
+        <div class="card">
+          <h2>Total Users</h2>
+          <p>{{ totalUsers }}</p>
+        </div>
+        <div class="card">
+          <h2>Monthly Revenue</h2>
+          <p>Rs. {{ monthlyRevenue }}</p>
+        </div>
+      </section>
+
+      <section class="recent-activities">
+        <h2>Recent Activities</h2>
+        <ul>
+          <li>User <strong>John Doe</strong> applied for a loan of Rs.10,000.</li>
+          <li>Loan application for <strong>Mark Smith</strong> was approved.</li>
+          <li>User <strong>Jane Doe</strong> missed her EMI payment.</li>
+          <li>New loan product added: <strong>Small Business Loan</strong>.</li>
+        </ul>
+      </section>
+    </main>
+  </div>

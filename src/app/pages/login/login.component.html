@@ -1,0 +1,74 @@
+<div class="particles">
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+</div>
+<div class="wave"></div>
+<div class="wave wave-2"></div>
+
+<div class="login-container">
+  <!-- Image Section -->
+  <!-- <div class="image-container">
+    <img src="assets/login.jpg" alt="Login Image" class="login-image" />
+  </div> -->
+
+  <mat-card class="login-card">
+    <h2>Login to ResolveX</h2>
+
+    <mat-form-field class="full-width">
+      <mat-label>Username</mat-label>
+      <input
+        matInput
+        [(ngModel)]="username"
+        name="username"
+        required
+        placeholder="Enter your username" />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        [(ngModel)]="password"
+        name="password"
+        type="password"
+        required
+        placeholder="Enter your password" />
+    </mat-form-field>
+
+    <div class="button-group">
+      <button mat-raised-button color="primary" (click)="onLogin()">Login</button>
+      <button mat-raised-button color="warn" (click)="goBack()">Return</button>
+    </div>
+
+    <a routerLink="/forgot-password" class="forgot-password-link">Forgot Password?</a>
+  </mat-card>
+</div>
+<script>
+  for (let i = 0; i < 12; i++) {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    const size = Math.random() * 20 + 10; // Random size between 10px and 30px
+    const positionX = Math.random() * 100; // Random X position
+    const positionY = Math.random() * 100; // Random Y position
+    const duration = Math.random() * 20 + 10; // Random float duration
+
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.left = `${positionX}vw`;
+    particle.style.top = `${positionY}vh`;
+    particle.style.animation = `float${i} ${duration}s infinite linear, fadeInOut ${Math.random() * 5 + 5}s infinite ease-in-out`;
+
+    document.querySelector('.particles').appendChild(particle);
+  }
+
+</script>

@@ -1,0 +1,44 @@
+<div class="issue-resolution-container">
+  <h2>Resolve Issues</h2>
+  <p>If your loan has been disapproved or you are facing any issues, please contact us for further assistance.</p>
+
+  <!-- Issue Description Input -->
+  <mat-form-field>
+    <textarea matInput placeholder="Describe your issue" [(ngModel)]="issueDescription"></textarea>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="submitIssue()">Submit Issue</button>
+  <button mat-raised-button color="warn" (click)="goBack()">Return</button>
+
+  <h3>Common Issues</h3>
+
+  <!-- Direct Button to Open "Missing Documents" Issue -->
+
+
+  <!-- Issue Cards -->
+  <div class="issue-cards">
+    <div *ngFor="let issue of commonIssues" class="issue-card-container">
+      <img class="imgs" [src]="issue.icon" [alt]="issue.title" (error)="onImageError($event)" />
+      <h4>{{ issue.title }}</h4>
+      <p>{{ issue.description }}</p>
+      <button mat-raised-button color="primary" (click)="openDetails(issue)">Learn More</button>
+    </div>
+  </div>
+
+  <!-- Details Modal -->
+  <div *ngIf="selectedIssue" class="details-box-overlay">
+    <div class="details-box">
+      <h3>{{ selectedIssue.title }} Details</h3>
+      <p><strong>Reason:</strong> {{ selectedIssue.reason }}</p>
+      <p><strong>Solution:</strong> {{ selectedIssue.solution }}</p>
+      <ul>
+        <li *ngFor="let tip of selectedIssue.tips">{{ tip }}</li>
+      </ul>
+      <p><strong>Contact:</strong> Email:
+        <a href="mailto:{{ selectedIssue.agentEmail }}">{{ selectedIssue.agentEmail }}</a>,
+        Phone: {{ selectedIssue.agentContact }}
+      </p>
+      <button mat-raised-button color="warn" (click)="closeDetails()">Close</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="settings-container">
+  <!-- Profile Settings Card -->
+  <mat-card class="settings-card">
+    <h2>Profile Settings</h2>
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmitProfile()">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Admin Name</mat-label>
+        <input matInput placeholder="Enter your name" formControlName="adminName" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" placeholder="Enter your email" formControlName="email" />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">Update Profile</button>
+    </form>
+  </mat-card>
+
+  <!-- Loan Parameters Card -->
+  <mat-card class="settings-card">
+    <h2>Loan Parameters</h2>
+    <form [formGroup]="loanParametersForm" (ngSubmit)="onSubmitLoanParameters()">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Default Interest Rate (%)</mat-label>
+        <input matInput type="number" placeholder="Enter interest rate" formControlName="defaultInterestRate" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Max Loan Amount (USD)</mat-label>
+        <input matInput type="number" placeholder="Enter max amount" formControlName="maxLoanAmount" />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">Save Changes</button>
+    </form>
+  </mat-card>
+
+  <!-- System Preferences Card -->
+  <mat-card class="settings-card">
+    <h2>System Preferences</h2>
+    <mat-slide-toggle color="primary" [checked]="notificationsEnabled" (change)="toggleNotifications($event.checked)">
+      Enable Notifications
+    </mat-slide-toggle>
+    <mat-slide-toggle color="accent" [checked]="autoApproveLoans" (change)="toggleAutoApproveLoans($event.checked)">
+      Auto-Approve Small Loans
+    </mat-slide-toggle>
+  </mat-card>
+
+  <button mat-raised-button color="warn" (click)="goBack()">
+    Return to Admin Dashboard
+  </button>
+</div>
