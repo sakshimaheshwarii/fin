@@ -16,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
+import { CommonModule } from '@angular/common';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
@@ -23,7 +24,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatOptionModule } from '@angular/material/core';
-
+import { ToastrModule } from 'ngx-toastr';
 // Components
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -146,6 +147,7 @@ const appRoutes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
     MatToolbarModule,
@@ -166,6 +168,7 @@ const appRoutes: Routes = [
     MatSortModule,
     MatOptionModule,
     // FontAwesomeModule,
+    ToastrModule.forRoot(),
   ],
   providers: [AuthService, LoanService, AuthGuard, { provide: MAT_DIALOG_DATA, useValue: {} }, {
     provide: MatDialogRef,

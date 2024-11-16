@@ -1,11 +1,13 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-
+import { Observable } from 'rxjs';
 interface UserProfile {
-  firstName: string;
-  lastName: string;
+  // firstName: string;
+  // lastName: string;
+  name:string;
   email: string;
   mobile: string;
   aadharNumber?: string;
@@ -20,8 +22,7 @@ interface UserProfile {
 export class ProfileComponent implements OnInit {
   profileForm!: FormGroup;
   userProfile: UserProfile = {
-    firstName: '',
-    lastName: '',
+   name:'',
     email: '',
     mobile: '',
     aadharNumber: '',
@@ -30,17 +31,23 @@ export class ProfileComponent implements OnInit {
   isEditing = false;
   private apiUrl = 'http://localhost:8087/api/user-profile';
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {}
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private authService:AuthService) {}
 
   ngOnInit(): void {
     this.initializeForm();
+    this.getUserId();
     this.loadUserProfile();
   }
 
+  getUserId(): Observable<number> {
+    return this.http.get<number>('http://localhost:8087/api/user-profile/current-user-id');
+  }
+  
+
   initializeForm(): void {
     this.profileForm = this.fb.group({
-      firstName: [this.userProfile.firstName, Validators.required],
-      lastName: [this.userProfile.lastName, Validators.required],
+      name: [this.userProfile.name, Validators.required],
+      // lastName: [this.userProfile.lastName, Validators.required],
       email: [this.userProfile.email, [Validators.required, Validators.email]],
       mobile: [
         this.userProfile.mobile,
@@ -58,38 +65,50 @@ export class ProfileComponent implements OnInit {
   }
 
 
- loadUserProfile(): void {
-    const userId = 1; // Replace with the actual user ID if dynamic
-    this.http.get<UserProfile>(`${this.apiUrl}/${userId}`).subscribe(
-      (profile) => {
-        this.userProfile = profile;
-        this.profileForm.patchValue(profile);
+  loadUserProfile(): void {
+    this.authService.getUserId().subscribe(
+      (userId: number) => {
+        this.http.get<UserProfile>(`${this.apiUrl}/get/${userId}`).subscribe(
+          (profile) => {
+            this.userProfile = profile;
+            this.profileForm.patchValue(profile);
+          },
+          (error) => {
+            console.error('Error loading user profile', error);
+          }
+        );
       },
       (error) => {
-        console.error('Error loading user profile', error);
+        console.error('Error fetching user ID', error);
       }
     );
-}
-
-saveProfile(): void {
+  }
+  
+  
+  saveProfile(): void {
     if (this.profileForm.valid) {
-      const userId = 1; // Replace with actual user ID
-      this.userProfile = this.profileForm.value;
-      this.http.put(`${this.apiUrl}/${userId}`, this.userProfile).subscribe(
-        (response) => {
-          console.log('User profile saved successfully', response);
-          confirm("Are you sure you want to save the changes?");
-          this.isEditing = false;
-          alert("Details Saved Successfully!!");
+      this.authService.getUserId().subscribe(
+        (userId) => {
+          this.userProfile = this.profileForm.value;
+          this.http.put(`${this.apiUrl}/update/${userId}`, this.userProfile).subscribe(
+            (response) => {
+              console.log('User profile saved successfully', response);
+              confirm('Are you sure you want to save the changes?');
+              this.isEditing = false;
+              alert('Details Saved Successfully!!');
+            },
+            (error) => {
+              console.error('Error saving user profile', error);
+            }
+          );
         },
         (error) => {
-          console.error('Error saving user profile', error);
+          console.error('Error fetching user ID', error);
         }
       );
     }
-}
-
-
+  }
+  
   toggleEdit(): void {
     this.isEditing = !this.isEditing;
     if (this.isEditing) {

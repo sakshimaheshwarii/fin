@@ -3,9 +3,9 @@
 
   <form [formGroup]="profileForm" *ngIf="isEditing; else viewMode" (ngSubmit)="saveProfile()">
     <label>
-      First Name:
-      <input formControlName="firstName" required />
-      <span *ngIf="profileForm.get('firstName')?.hasError('required') && profileForm.get('firstName')?.touched">
+      Full Name:
+      <input formControlName="name" required />
+      <span *ngIf="profileForm.get('name')?.hasError('required') && profileForm.get('name')?.touched">
         Full Name is required.
       </span>
     </label>
@@ -55,7 +55,7 @@
 
   <ng-template #viewMode>
     <div class="profile-info">
-      <p><strong>Full Name:</strong> {{ userProfile.firstName }}</p>
+      <p><strong>Full Name:</strong> {{ userProfile.name }}</p>
       <p><strong>Email:</strong> {{ userProfile.email }}</p>
       <p><strong>Mobile Number:</strong> {{ userProfile.mobile }}</p>
       <p><strong>Aadhar Number:</strong> {{ userProfile.aadharNumber }}</p>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent {
   password: string = '';
   role: string | null = '';  // Set default as null for validation
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router, private toastr:ToastrService) {
     // Retrieve the role from localStorage or set a default
     this.role = localStorage.getItem('selectedRole') || '';
     console.log("Role selected: ", this.role);
@@ -23,7 +24,9 @@ export class LoginComponent {
       // Admin login
       this.authService.loginAdmin(this.username, this.password).subscribe({
         next: (response) => {
-          console.log('Admin login successful', response);
+          console.log('Login successful', response);
+          // alert("Admin Login Successful");
+          this.toastr.success("Account Created Successfully");
           this.router.navigate(['/admin']); // Navigate to the admin dashboard
         },
         error: (err) => {
@@ -35,6 +38,7 @@ export class LoginComponent {
       this.authService.loginUser(this.username, this.password).subscribe({
         next: (response) => {
           console.log('User login successful', response);
+          alert("User Login Successful");
           this.router.navigate(['/user/home']); // Navigate to the user dashboard
         },
         error: (err) => {

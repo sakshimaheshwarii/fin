@@ -21,7 +21,7 @@ export class ForgotPasswordComponent {
       const email = form.value.email;
 
       // Send the password reset request to the backend
-      this.http.post(`http://localhost:8087/api/auth/request-password-reset`, { email })
+      this.http.post(`http://localhost:8087/api/auth/forgot-password`, { email })
         .subscribe(
           (response: any) => {
             console.log('Password reset link sent:', response);
