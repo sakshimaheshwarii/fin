@@ -4,17 +4,17 @@
   <div class="form-container">
     <mat-form-field appearance="outline" class="input-field">
       <mat-label>Loan Amount</mat-label>
-      <input matInput type="number" [(ngModel)]="amount" placeholder="Enter Loan Amount in Rs." required>
+      <input matInput type="number" [(ngModel)]="amount" placeholder="Enter Loan Amount in Rs." required />
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="input-field">
       <mat-label>Interest Rate (%)</mat-label>
-      <input matInput type="number" [(ngModel)]="rate" placeholder="Enter Interest Rate" required>
+      <input matInput type="number" [(ngModel)]="rate" placeholder="Enter Interest Rate" required />
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="input-field">
       <mat-label>Loan Term (Months)</mat-label>
-      <input matInput type="number" [(ngModel)]="term" placeholder="Enter Loan Term in Months" required>
+      <input matInput type="number" [(ngModel)]="term" placeholder="Enter Loan Term in Months" required />
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="input-field">
@@ -42,33 +42,52 @@
     <div *ngIf="emi" class="emi-result">
       <h3>Your {{ frequency }} EMI: ₹{{ emi | number:'1.2-2' }}</h3>
     </div>
+  
+    <div *ngIf="showSchedule" class="schedule-container">
+      <h1 style="font-size: 24px;">EMI Schedule</h1>
+      <table mat-table [dataSource]="schedule" class="mat-elevation-z8">
+        <ng-container matColumnDef="month">
+          <th mat-header-cell *matHeaderCellDef> Month </th>
+          <td mat-cell *matCellDef="let emi"> {{ emi.month }} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="principal">
+          <th mat-header-cell *matHeaderCellDef> Principal </th>
+          <td mat-cell *matCellDef="let emi"> ₹{{ emi.principal | number:'1.2-2' }} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="interest">
+          <th mat-header-cell *matHeaderCellDef> Interest </th>
+          <td mat-cell *matCellDef="let emi"> ₹{{ emi.interest | number:'1.2-2' }} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="total">
+          <th mat-header-cell *matHeaderCellDef> Total EMI </th>
+          <td mat-cell *matCellDef="let emi"> ₹{{ emi.total | number:'1.2-2' }} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="remaining">
+          <th mat-header-cell *matHeaderCellDef> Remaining </th>
+          <td mat-cell *matCellDef="let emi"> ₹{{ emi.remaining | number:'1.2-2' }} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="paid">
+          <th mat-header-cell *matHeaderCellDef> Status </th>
+          <td mat-cell *matCellDef="let emi; let i = index">
+            <button mat-raised-button 
+                    color="primary" 
+                    (click)="togglePaidStatus(i)" 
+                    [disabled]="emi.paid">
+              <mat-icon *ngIf="emi.paid">done_all</mat-icon>
+              <mat-icon *ngIf="!emi.paid">cancel</mat-icon>
+              {{ emi.paid ? 'Paid' : 'Unpaid' }}
+            </button>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
   </div>
-
-  <div *ngIf="showSchedule" class="schedule-container">
-    <h3>EMI Schedule</h3>
-    <table mat-table [dataSource]="schedule" class="mat-elevation-z8">
-      <ng-container matColumnDef="month">
-        <th mat-header-cell *matHeaderCellDef> Month </th>
-        <td mat-cell *matCellDef="let emi"> {{ emi.month }} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="principal">
-        <th mat-header-cell *matHeaderCellDef> Principal </th>
-        <td mat-cell *matCellDef="let emi"> ₹{{ emi.principal | number:'1.2-2' }} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="interest">
-        <th mat-header-cell *matHeaderCellDef> Interest </th>
-        <td mat-cell *matCellDef="let emi"> ₹{{ emi.interest | number:'1.2-2' }} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="total">
-        <th mat-header-cell *matHeaderCellDef> Total EMI </th>
-        <td mat-cell *matCellDef="let emi"> ₹{{ emi.total | number:'1.2-2' }} </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
-  </div>
-</div>
+  

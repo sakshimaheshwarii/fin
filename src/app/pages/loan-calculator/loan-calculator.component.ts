@@ -1,17 +1,20 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+
 interface EMISchedule {
   month: number;
   principal: number;
   interest: number;
   total: number;
+  remaining: number;
+  paid: boolean;
 }
 
 @Component({
   selector: 'app-loan-calculator',
   templateUrl: './loan-calculator.component.html',
-  styleUrls: ['./loan-calculator.component.css']
+  styleUrls: ['./loan-calculator.component.css'],
 })
 export class LoanCalculatorComponent {
   amount!: number;
@@ -21,9 +24,16 @@ export class LoanCalculatorComponent {
   emi: number | null = null;
   showSchedule: boolean = false;
   schedule: EMISchedule[] = [];
-  displayedColumns: string[] = ['month', 'principal', 'interest', 'total'];
+  displayedColumns: string[] = [
+    'month',
+    'principal',
+    'interest',
+    'total',
+    'remaining',
+    'paid',
+  ];
 
-  constructor(private router: Router, private location:Location) {}
+  constructor(private router: Router, private location: Location) {}
 
   calculateEMI() {
     if (!this.amount || !this.rate || !this.term) {
@@ -52,8 +62,11 @@ export class LoanCalculatorComponent {
     }
 
     const emiRate = adjustedRate / 12;
-    this.emi = this.amount * emiRate * Math.pow(1 + emiRate, adjustedTerm) /
-               (Math.pow(1 + emiRate, adjustedTerm) - 1);
+    this.emi =
+      (this.amount *
+        emiRate *
+        Math.pow(1 + emiRate, adjustedTerm)) /
+      (Math.pow(1 + emiRate, adjustedTerm) - 1);
 
     this.generateSchedule(adjustedTerm, emiRate);
   }
@@ -71,9 +84,15 @@ export class LoanCalculatorComponent {
         month: i,
         principal: principal,
         interest: interest,
-        total: this.emi??0,
+        total: this.emi!,
+        remaining: Math.max(balance, 0), // Remaining balance
+        paid: false, // Payment status
       });
     }
+  }
+
+  togglePaidStatus(index: number) {
+    this.schedule[index].paid = !this.schedule[index].paid;
   }
 
   goBack(): void {

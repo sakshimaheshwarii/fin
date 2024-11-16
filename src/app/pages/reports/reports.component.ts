@@ -19,23 +19,51 @@ export class ReportsComponent {
   public startDate: string = '';
   public endDate: string = '';
 
-  constructor(public chartElem: ElementRef, private router: Router) {}
+  // Chart Data
+  public barChartData: any[] = [];
+  public pieChartData: any[] = [];
+
+  constructor(public chartElem: ElementRef, private router: Router) {
+    this.initializeCharts();
+  }
 
   public generateReport(): void {
     const start = new Date(this.startDate);
     const end = new Date(this.endDate);
 
     if (this.startDate && this.endDate) {
-      this.filteredEntries = this.reportEntries.filter(entry => {
+      this.filteredEntries = this.reportEntries.filter((entry) => {
         const entryDate = new Date(entry.date);
         return entryDate >= start && entryDate <= end;
       });
     } else {
       this.filteredEntries = [...this.reportEntries]; // Reset to all entries
     }
+
+    this.updateChartData();
   }
 
   public goBack(): void {
     this.router.navigate(['/admin']); // Navigate back to the admin dashboard
+  }
+
+  // Initialize Charts
+  private initializeCharts(): void {
+    this.updateChartData();
+  }
+
+  private updateChartData(): void {
+    // Bar Chart: Revenue Distribution
+    this.barChartData = this.filteredEntries.map((entry) => ({
+      name: entry.description,
+      value: entry.amount,
+    }));
+
+    // Pie Chart: Loan Type Distribution (Static Example)
+    this.pieChartData = [
+      { name: 'Personal Loan', value: 40 },
+      { name: 'Home Loan', value: 25 },
+      { name: 'Education Loan', value: 35 },
+    ];
   }
 }

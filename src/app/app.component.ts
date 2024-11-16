@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ResolveX Loan Origination System';
+  title = 'ResolveX: Loan Origination System';
   loading: boolean = true; // Start with loading true
 
   // Simulate loading (e.g., when the app initializes)

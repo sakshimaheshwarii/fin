@@ -26,7 +26,7 @@ export class LoginComponent {
         next: (response) => {
           console.log('Login successful', response);
           // alert("Admin Login Successful");
-          this.toastr.success("Account Created Successfully");
+          this.toastr.success("Admin Login Successful");
           this.router.navigate(['/admin']); // Navigate to the admin dashboard
         },
         error: (err) => {
@@ -38,7 +38,7 @@ export class LoginComponent {
       this.authService.loginUser(this.username, this.password).subscribe({
         next: (response) => {
           console.log('User login successful', response);
-          alert("User Login Successful");
+          this.toastr.success("User Login Successful");
           this.router.navigate(['/user/home']); // Navigate to the user dashboard
         },
         error: (err) => {

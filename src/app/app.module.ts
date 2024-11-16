@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+
 // import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 // Angular Material Modules
@@ -69,6 +71,9 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { HomeDefaultComponent } from './pages/home-default/home-default.component';
+import { ChartModule } from '@syncfusion/ej2-angular-charts';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 
 // Application Routes
 const appRoutes: Routes = [
@@ -169,6 +174,8 @@ const appRoutes: Routes = [
     MatOptionModule,
     // FontAwesomeModule,
     ToastrModule.forRoot(),
+    ChartModule,
+    NgxChartsModule,
   ],
   providers: [AuthService, LoanService, AuthGuard, { provide: MAT_DIALOG_DATA, useValue: {} }, {
     provide: MatDialogRef,

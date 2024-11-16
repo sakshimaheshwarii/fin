@@ -8,11 +8,10 @@
     <label for="endDate">End Date:</label>
     <input type="date" id="endDate" [(ngModel)]="endDate" />
 
-    <button mat-raised-button color="primary" (click)="generateReport()">
-      Generate Report
-    </button>
+    <button mat-raised-button color="primary" (click)="generateReport()">Generate Report</button>
   </div>
 
+  <!-- Data Table -->
   <table mat-table [dataSource]="filteredEntries" class="mat-elevation-z8">
     <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef>Date</th>
@@ -33,7 +32,26 @@
     <tr mat-row *matRowDef="let row; columns: ['date', 'description', 'amount'];"></tr>
   </table>
 
-  <button mat-raised-button color="warn" (click)="goBack()" class="return-btn">
-    Return to Admin Dashboard
-  </button>
+  <!-- Graphs -->
+  <div class="graphs">
+    <h2>Revenue Distribution</h2>
+    <ngx-charts-bar-vertical
+      [results]="barChartData"
+      [xAxis]="true"
+      [yAxis]="true"
+      [legend]="true"
+      [showDataLabel]="true"
+      [view]="[700, 400]">
+    </ngx-charts-bar-vertical>
+
+    <h2>Loan Type Distribution</h2>
+    <ngx-charts-pie-chart
+      [results]="pieChartData"
+      [legend]="true"
+      [labels]="true"
+      [view]="[700, 400]">
+    </ngx-charts-pie-chart>
+  </div>
+
+  <button mat-raised-button color="warn" (click)="goBack()" class="return-btn">Return to Admin Dashboard</button>
 </div>
