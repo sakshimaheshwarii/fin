@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-welcome',
@@ -44,8 +45,7 @@ export class WelcomeComponent implements OnInit {
   isDarkMode = false;
   hoveredButton = '';
   service: any = {}; // Initialize the service object to avoid undefined error
-
-  constructor(private dialog: MatDialog, private router: Router) {}
+  constructor(private dialog: MatDialog, private router: Router, private toastr:ToastrService) {}
 
   ngOnInit() {
     // Check system preference for dark mode
@@ -66,6 +66,7 @@ export class WelcomeComponent implements OnInit {
 
   selectRole(role: string): void {
     console.log(`Selected role: ${role}`);
+    this.toastr.info(`${role} selected`);
     this.service.role = role; // Assign the selected role
     localStorage.setItem('selectedRole', role); // Save the role in localStorage
     this.router.navigate(['/role']); // Navigate to the next page

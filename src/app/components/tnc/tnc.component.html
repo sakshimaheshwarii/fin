@@ -4,89 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms and Conditions - ResolveX</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            background-color: #f4f4f4;
-        }
-        header, footer {
-            background: #333;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
-        h1, h2 {
-            color: #333;
-        }
-        section {
-            margin-bottom: 20px;
-            padding: 15px;
-            background: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .toggle {
-            cursor: pointer;
-            color: blue;
-            text-decoration: underline;
-        }
-    </style>
 </head>
 <body>
-    <header>
-        <h1>Terms and Conditions</h1>
-        <p>Last updated: [Insert Date]</p>
+    <header class="header">
+    <p class="last-updated">Last updated: <span id="lastUpdated"></span></p>
     </header>
-    <main>
-        <section>
-            <h2>1. Introduction</h2>
-            <p>Welcome to ResolveX. By using our services, you agree to comply with these terms and conditions.</p>
-        </section>
-        <section>
-            <h2>2. Services Provided</h2>
-            <p>ResolveX offers solutions for loan origination, including assistance with missing documents and civil score evaluations.</p>
-        </section>
-        <section>
-            <h2>3. User Responsibilities</h2>
-            <p>Users must provide accurate information and comply with all applicable laws.</p>
-        </section>
-        <section>
-            <h2>4. Privacy Policy</h2>
-            <p>Your privacy is important to us. Please review our Privacy Policy to understand how we handle your data.</p>
-        </section>
-        <section>
-            <h2>5. Limitation of Liability</h2>
-            <p>ResolveX is not liable for any indirect or consequential damages arising from the use of our services.</p>
-        </section>
-        <section>
-            <h2>6. Changes to Terms</h2>
-            <p>We may update these terms from time to time. Users will be notified of any significant changes.</p>
-        </section>
-        <section>
-            <h2>7. FAQ</h2>
-            <p class="toggle" onclick="toggleFAQ()">Click here for FAQs</p>
-            <div id="faq" style="display:none;">
-                <p><strong>Q: What should I do if I have missing documents?</strong></p>
-                <p>A: Please contact our support team for assistance.</p>
-                <p><strong>Q: How is my civil score evaluated?</strong></p>
-                <p>A: We use a comprehensive analysis of your financial history.</p>
-            </div>
-        </section>
+
+    <main class="container">
+        <div class="progress-bar">
+            <div class="progress" id="readProgress"></div>
+        </div>
+
+        <nav class="table-of-contents">
+            <h3>Quick Navigation</h3>
+            <ul id="tocList"></ul>
+        </nav>
+
+        <div class="content">
+            <section id="introduction">
+                <h2>1. Introduction</h2>
+                <p>Welcome to ResolveX. By using our services, you agree to comply with these terms and conditions. This document outlines your rights and responsibilities as a user of our platform.</p>
+            </section>
+
+            <section id="services">
+                <h2>2. Services Provided</h2>
+                <p>ResolveX offers comprehensive solutions for loan origination, including:</p>
+                <ul>
+                    <li>Document verification and completion assistance</li>
+                    <li>Civil score evaluation and analysis</li>
+                    <li>Real-time application tracking</li>
+                    <li>Secure document storage</li>
+                </ul>
+            </section>
+
+            <section id="responsibilities">
+                <h2>3. User Responsibilities</h2>
+                <p>Users must adhere to the following guidelines:</p>
+                <ul>
+                    <li>Provide accurate and up-to-date information</li>
+                    <li>Maintain confidentiality of account credentials</li>
+                    <li>Comply with all applicable laws and regulations</li>
+                    <li>Report any suspicious activities or security concerns</li>
+                </ul>
+            </section>
+
+            <section id="privacy">
+                <h2>4. Privacy Policy</h2>
+                <p>Your privacy is paramount to us. We implement robust security measures to protect your data. For detailed information, please review our <a href="#" class="policy-link">Privacy Policy</a>.</p>
+            </section>
+
+            <section id="liability">
+                <h2>5. Limitation of Liability</h2>
+                <p>ResolveX is not liable for any indirect or consequential damages arising from the use of our services. This includes but is not limited to:</p>
+                <ul>
+                    <li>Data loss or corruption</li>
+                    <li>Financial losses</li>
+                    <li>Service interruptions</li>
+                    <li>Third-party actions</li>
+                </ul>
+            </section>
+
+            <section id="changes">
+                <h2>6. Changes to Terms</h2>
+                <p>We reserve the right to modify these terms at our discretion. Users will be notified of significant changes through:</p>
+                <ul>
+                    <li>Email notifications</li>
+                    <li>Platform announcements</li>
+                    <li>Website updates</li>
+                </ul>
+            </section>
+
+            <section id="faq">
+                <h2>7. FAQ</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question" data-faq="1">
+                            What should I do if I have missing documents?
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Contact our support team immediately through the help center. Our document specialists will guide you through the process of obtaining or replacing missing documentation.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" data-faq="2">
+                            How is my civil score evaluated?
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            We use a comprehensive analysis of your financial history, including payment records, credit utilization, and account stability. Our advanced algorithms ensure fair and accurate assessments.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" data-faq="3">
+                            How long does the evaluation process take?
+                            <span class="toggle-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Typical evaluations are completed within 2-3 business days. Complex cases may require additional time for thorough review.
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
-    <footer>
-        <p>&copy; [Insert Year] ResolveX. All rights reserved.</p>
-    </footer>
-    <script>
-        function toggleFAQ() {
-            var faq = document.getElementById("faq");
-            if (faq.style.display === "none") {
-                faq.style.display = "block";
-            } else {
-                faq.style.display = "none";
-            }
-        }
-    </script>
+    <button id="scrollTop" class="scroll-top">↑</button>
+
 </body>
 </html>

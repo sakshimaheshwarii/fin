@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-forgot-password',
@@ -13,7 +14,7 @@ export class ForgotPasswordComponent {
   message: string = '';
 
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router, private http: HttpClient, private toastr:ToastrService) {}
 
   onSubmit(form: any) {
     if (form.valid) {
@@ -25,11 +26,13 @@ export class ForgotPasswordComponent {
         .subscribe(
           (response: any) => {
             console.log('Password reset link sent:', response);
+            this.toastr.success("Password Reset Link sent");
             this.message = 'If this email is registered, a reset link will be sent.';
             this.router.navigate(['/login']);
           },
           (error: any) => {
             console.error('Error sending password reset link:', error);
+            this.toastr.warning("Error sending password reset link")
             this.message = 'An error occurred. Please try again.';
           },
           () => {

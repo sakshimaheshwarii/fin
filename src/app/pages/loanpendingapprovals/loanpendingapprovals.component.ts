@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-pending-approvals',
@@ -19,7 +20,7 @@ export class LoanPendingApprovalsComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private location: Location, private http: HttpClient) {}
+  constructor(private location: Location, private http: HttpClient, private toastr:ToastrService) {}
 
   ngOnInit() {
     this.fetchApprovals();
@@ -36,7 +37,7 @@ export class LoanPendingApprovalsComponent implements OnInit {
       },
       (error) => {
         console.error('Failed to fetch approvals:', error);
-        alert('Error fetching approvals from the server.');
+        this.toastr.warning('Error fetching approvals from the server.');
       }
     );
   }
@@ -68,12 +69,12 @@ export class LoanPendingApprovalsComponent implements OnInit {
     this.http.post(`http://localhost:8087/api/approvals/${approval.id}/approve`, {}).subscribe(
       () => {
         approval.status = 'Approved';
-        alert(`${approval.name}'s request has been approved.`);
+        this.toastr.info(`${approval.name}'s request has been approved.`);
         this.applyFilter(); // Reapply filter to update the table view
       },
       (error) => {
         console.error('Approval failed:', error);
-        alert('Failed to approve the request.');
+        this.toastr.warning('Failed to approve the request.');
       }
     );
   }
@@ -83,12 +84,12 @@ export class LoanPendingApprovalsComponent implements OnInit {
     this.http.post(`http://localhost:8087/api/approvals/${approval.id}/reject`, {}).subscribe(
       () => {
         approval.status = 'Rejected';
-        alert(`${approval.name}'s request has been rejected.`);
+        this.toastr.info(`${approval.name}'s request has been rejected.`);
         this.applyFilter(); // Reapply filter to update the table view
       },
       (error) => {
         console.error('Rejection failed:', error);
-        alert('Failed to reject the request.');
+        this.toastr.warning('Failed to reject the request.');
       }
     );
   }

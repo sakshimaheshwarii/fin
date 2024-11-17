@@ -1,0 +1,154 @@
+:host {
+  /* Light Mode Variables */
+  --bg-color: #f8f9fa;
+  --text-color: #2d3436;
+  --section-bg: #ffffff;
+  --header-bg: #4834d4;
+  --header-text: #ffffff;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --hover-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  --transition-duration: 0.3s;
+}
+
+.dark-mode {
+  /* Dark Mode Variables */
+  --bg-color: #2d3436;
+  --text-color: #f8f9fa;
+  --section-bg: #34495e;
+  --header-bg: #2c3e50;
+  --header-text: #ffffff;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --hover-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Container Styles */
+.privacy-container {
+  max-height: 100vh;
+  height: auto;
+  overflow-y: scroll;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background var(--transition-duration), color var(--transition-duration);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 100;
+}
+
+.theme-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  backdrop-filter: blur(5px);
+  transition: transform var(--transition-duration);
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+/* Header Section */
+.privacy-header {
+  height: 40vh;
+  background: var(--header-bg);
+  color: var(--header-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.header-content {
+  z-index: 1;
+}
+
+.header-content h1 {
+  font-size: 3rem;
+  margin: 0;
+  font-weight: bold;
+}
+
+.header-decoration {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4rem;
+  background: var(--bg-color);
+  clip-path: polygon(0 100%, 100% 100%, 100% 0);
+}
+
+/* Main Content Section */
+.privacy-content {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* Policy Section Cards */
+.policy-section {
+  background: var(--section-bg);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  transition: all var(--transition-duration);
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: var(--hover-shadow);
+    transform: translateY(-2px);
+  }
+}
+
+/* Section Header */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.expand-icon {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Expanded Content */
+.section-content {
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .section-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .privacy-header {
+    height: 30vh;
+  }
+
+  .header-content h1 {
+    font-size: 2rem;
+  }
+}

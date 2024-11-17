@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 interface EMISchedule {
   month: number;
@@ -33,11 +34,11 @@ export class LoanCalculatorComponent {
     'paid',
   ];
 
-  constructor(private router: Router, private location: Location) {}
+  constructor(private router: Router, private location: Location, private toastr:ToastrService) {}
 
   calculateEMI() {
     if (!this.amount || !this.rate || !this.term) {
-      alert('Please fill in all fields before calculating EMI.');
+      this.toastr.warning('Please fill in all fields before calculating EMI.');
       return;
     }
 

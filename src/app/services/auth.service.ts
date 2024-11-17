@@ -9,13 +9,17 @@ export class AuthService {
   private baseUrl = 'http://localhost:8087/api/auth'; // Base URL for backend API
   private loginStatus = new BehaviorSubject<boolean>(!!localStorage.getItem('authToken'));
   private registrationStatus = new BehaviorSubject<boolean>(!!localStorage.getItem('authToken'));
-  
+
   constructor(private http: HttpClient) {}
-  
+
   getUserId(): Observable<number> {
     return this.http.get<number>('http://localhost:8087/api/user-profile/current-user-id');
   }
-  
+
+  getToken(): string | null {
+    return localStorage.getItem('authToken');
+  }
+
   // Register user method
   registerUser(name: string, username: string, email: string, password: string): Observable<any> {
     const registerData = { name, username, email, password };

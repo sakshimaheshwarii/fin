@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 interface UserProfile {
   // firstName: string;
   // lastName: string;
@@ -31,7 +32,7 @@ export class ProfileComponent implements OnInit {
   isEditing = false;
   private apiUrl = 'http://localhost:8087/api/user-profile';
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private authService:AuthService) {}
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private authService:AuthService, private toastr:ToastrService) {}
 
   ngOnInit(): void {
     this.initializeForm();
@@ -42,7 +43,7 @@ export class ProfileComponent implements OnInit {
   getUserId(): Observable<number> {
     return this.http.get<number>('http://localhost:8087/api/user-profile/current-user-id');
   }
-  
+
 
   initializeForm(): void {
     this.profileForm = this.fb.group({
@@ -83,8 +84,8 @@ export class ProfileComponent implements OnInit {
       }
     );
   }
-  
-  
+
+
   saveProfile(): void {
     if (this.profileForm.valid) {
       this.authService.getUserId().subscribe(
@@ -95,7 +96,7 @@ export class ProfileComponent implements OnInit {
               console.log('User profile saved successfully', response);
               confirm('Are you sure you want to save the changes?');
               this.isEditing = false;
-              alert('Details Saved Successfully!!');
+              this.toastr.success('Details Saved Successfully!!');
             },
             (error) => {
               console.error('Error saving user profile', error);
@@ -108,7 +109,7 @@ export class ProfileComponent implements OnInit {
       );
     }
   }
-  
+
   toggleEdit(): void {
     this.isEditing = !this.isEditing;
     if (this.isEditing) {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DashboardService } from '../../services/dashboard.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -15,7 +15,7 @@ export class AdminComponent implements OnInit {
   isLoading: boolean = true;
   errorMessage: string = '';
 
-  constructor(private router: Router, private dashboardService: DashboardService) {}
+  constructor(private router: Router, private dashboardService: DashboardService, private toastr:ToastrService) {}
 
   ngOnInit(): void {
     this.loadDashboardData();
@@ -44,6 +44,7 @@ export class AdminComponent implements OnInit {
   logout(): void {
     // Implement logout logic here
     this.router.navigate(['/logout']);
+    this.toastr.info("You are logging Out!");
   }
   
 }

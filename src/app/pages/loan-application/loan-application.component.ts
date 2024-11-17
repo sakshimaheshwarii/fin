@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Location } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-loan-application',
@@ -21,7 +22,7 @@ export class LoanApplicationComponent {
   successMessage: string | null = null;
   errorMessage: string | null = null;
 
-  constructor(private location: Location, private http: HttpClient) {
+  constructor(private location: Location, private http: HttpClient, private toastr:ToastrService) {
     this.generateCaptcha();
   }
 
@@ -31,7 +32,7 @@ export class LoanApplicationComponent {
     if (input?.files?.length) {
       const file = input.files[0];
       if (file.size > 10 * 1024 * 1024) { // Example: 10MB size limit
-        alert('File size exceeds the 10MB limit.');
+        this.toastr.info('File size exceeds the 10MB limit.');
         return;
       }
       this.collateralDocument = file;
@@ -88,6 +89,7 @@ export class LoanApplicationComponent {
         .subscribe({
           next: (response) => {
             this.successMessage = response.message;
+            this.toastr.success("Loan Application Request Sent")
             this.loanId = response.loanId;
             this.clearForm(form);
           },
@@ -97,7 +99,7 @@ export class LoanApplicationComponent {
           }
         });
     } else {
-      alert('Please fill out the form correctly.');
+      this.toastr.warning('Please fill out the form correctly.');
     }
   }
 

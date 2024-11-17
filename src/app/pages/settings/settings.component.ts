@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SettingsService } from '../../services/settings.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-settings',
@@ -13,7 +14,7 @@ export class SettingsComponent implements OnInit {
   notificationsEnabled = false;
   autoApproveLoans = false;
 
-  constructor(private fb: FormBuilder, private settingsService: SettingsService) {}
+  constructor(private fb: FormBuilder, private settingsService: SettingsService, private toastr:ToastrService) {}
 
   ngOnInit(): void {
     // Initialize form groups
@@ -49,7 +50,7 @@ export class SettingsComponent implements OnInit {
   onSubmitProfile(): void {
     if (this.profileForm.valid) {
       this.settingsService.updateProfile(this.profileForm.value).subscribe(() => {
-        alert('Profile updated successfully');
+        this.toastr.success('Profile updated successfully');
       });
     }
   }
@@ -57,7 +58,7 @@ export class SettingsComponent implements OnInit {
   onSubmitLoanParameters(): void {
     if (this.loanParametersForm.valid) {
       this.settingsService.saveLoanParameters(this.loanParametersForm.value).subscribe(() => {
-        alert('Loan parameters updated successfully');
+        this.toastr.success('Loan parameters updated successfully');
       });
     }
   }

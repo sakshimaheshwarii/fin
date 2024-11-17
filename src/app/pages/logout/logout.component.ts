@@ -2,6 +2,7 @@
 import { Component, ViewChild, TemplateRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-logout',
@@ -16,7 +17,7 @@ export class LogoutComponent {
   stars: boolean[] = Array(5).fill(false); // Array for star rating
 
 
-  constructor(private dialog: MatDialog, private router: Router) {}
+  constructor(private dialog: MatDialog, private router: Router, private toastr:ToastrService) {}
 
   confirmLogout() {
     const confirmation = confirm('Are you sure you want to log out?');
@@ -43,6 +44,7 @@ export class LogoutComponent {
     console.log('Rating:', this.rating);
     console.log('Feedback:', this.feedback);
     this.submitted = true;
+    this.toastr.success("You are Sucessfully logged out")
     this.closeDialog();
   }
 

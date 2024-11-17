@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 interface UserManagement {
   id: number;
@@ -33,7 +34,8 @@ export class UserManagementComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private location: Location,
-    private router: Router
+    private toastr:ToastrService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -86,7 +88,7 @@ export class UserManagementComponent implements OnInit {
   }
 
   editUser(user: UserManagement) {
-    alert(`Editing ${user.username}`);
+    this.toastr.info(`Editing ${user.username}`);
     this.selectedUser = user;
   }
 

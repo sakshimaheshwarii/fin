@@ -58,6 +58,7 @@ import { PreloaderComponent } from './pages/preloader/preloader.component';
 import { ScoreComponent } from './pages/score/score.component';
 import { LoanListComponent } from './pages/loan-list/loan-list.component';
 
+
 // Services & Guards
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './guards/auth.guard';
@@ -72,7 +73,7 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { HomeDefaultComponent } from './pages/home-default/home-default.component';
 import { ChartModule } from '@syncfusion/ej2-angular-charts';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+// import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 // Application Routes
@@ -146,7 +147,9 @@ const appRoutes: Routes = [
     ForgotPasswordComponent,
     ResetPasswordComponent,
     HomeDefaultComponent,
-    SettingsComponent
+    SettingsComponent,
+    PrivacyComponent,
+    TncComponent,
   ],
   imports: [
     BrowserModule,
@@ -175,7 +178,7 @@ const appRoutes: Routes = [
     // FontAwesomeModule,
     ToastrModule.forRoot(),
     ChartModule,
-    NgxChartsModule,
+    // NgxChartsModule,
   ],
   providers: [AuthService, LoanService, AuthGuard, { provide: MAT_DIALOG_DATA, useValue: {} }, {
     provide: MatDialogRef,

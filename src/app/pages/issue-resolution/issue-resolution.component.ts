@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { Location } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-issue-resolution',
@@ -58,7 +59,7 @@ export class IssueResolutionComponent implements OnInit {
     },
   ];
 
-  constructor(public dialog: MatDialog, private location: Location, private http: HttpClient) {}
+  constructor(public dialog: MatDialog, private location: Location, private http: HttpClient, private toastr:ToastrService) {}
 
   ngOnInit() {
     // Any other initialization logic
@@ -70,7 +71,7 @@ export class IssueResolutionComponent implements OnInit {
 
   submitIssue() {
     if (!this.issueDescription.trim()) {
-      alert('Please describe your issue before submitting.');
+      this.toastr.info('Please describe your issue before submitting.');
       return;
     }
 
@@ -78,7 +79,7 @@ export class IssueResolutionComponent implements OnInit {
       params: { description: this.issueDescription }
     }).subscribe({
       next: () => {
-        alert('Your issue has been submitted successfully!');
+        this.toastr.success('Your issue has been submitted successfully!');
         this.issueDescription = '';
       },
       error: (error) => console.error('Error submitting issue:', error)

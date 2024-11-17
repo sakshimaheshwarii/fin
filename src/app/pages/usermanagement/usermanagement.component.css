@@ -1,4 +1,9 @@
-
+.hariti{
+  height: auto;
+  max-height: 100vh;
+  overflow-y: scroll;
+  padding-bottom: 180px;
+}
 /* Filter Section */
 .filter-section {
   display: flex;
@@ -36,7 +41,7 @@
 .mat-elevation-z8 {
   margin: 20px 0;
   border-radius: 10px;
-  overflow: hidden;
+  overflow: scroll;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
 }
 
