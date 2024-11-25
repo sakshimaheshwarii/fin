@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./service.component.css']
 })
 export class ServiceComponent {
-  selectedService: any = null; // Holds the selected service for 'Learn More'
+  selectedService: any = null;
 
   services = [
     {
@@ -54,14 +54,14 @@ export class ServiceComponent {
   ];
 
   learnMore(service: any) {
-    this.selectedService = service; // Set the selected service
+    this.selectedService = service;
   }
 
   closeDetails() {
-    this.selectedService = null; // Close the details box
+    this.selectedService = null;
   }
 
   onImageError(event: any) {
-    event.target.src = 'assets/loan1.png'; // Fallback for broken images
+    event.target.src = 'assets/loan1.png';
   }
 }

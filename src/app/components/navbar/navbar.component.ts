@@ -82,7 +82,6 @@ export class NavbarComponent implements OnInit {
     this.isNavbarCollapsed = !this.isNavbarCollapsed;
   }
 
-  // navbar.component.ts
 @HostListener('window:scroll', ['$event'])
 onWindowScroll() {
   const navbar = document.querySelector('.navbar');

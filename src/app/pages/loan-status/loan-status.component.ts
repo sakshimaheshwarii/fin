@@ -13,29 +13,26 @@ export class LoanStatusComponent {
   loading: boolean = false;
   errorMessage: string | null = null;
 
-  constructor(private location: Location) {} // Injecting the Location service
+  constructor(private location: Location) {}
 
   checkStatus() {
     this.loading = true;
-    this.errorMessage = null; // Reset error message
-    this.loanStatus = null; // Reset loan status
+    this.errorMessage = null;
+    this.loanStatus = null;
 
-    // Simulate an API call to check loan status
     setTimeout(() => {
       this.loading = false;
 
-      // Simulated response
       if (this.applicationId === '123456') {
         this.loanStatus = 'Approved';
         this.loanDetails = 'Your loan of $10,000 is approved and will be disbursed shortly.';
       } else {
         this.errorMessage = 'Loan Application ID not found. Please check and try again.';
       }
-    }, 2000); // Simulate a 2-second loading time
+    }, 2000);
   }
 
   goBack() {
-    // Logic to navigate back
-    this.location.back(); // Navigates back to the previous page
+    this.location.back();
   }
 }

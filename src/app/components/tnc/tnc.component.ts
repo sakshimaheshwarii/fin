@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./tnc.component.css']
 })
 export class TncComponent {
-  // Example dynamic table of contents generation
   generateToc(sections: HTMLElement[]) {
     const toc = document.getElementById('toc');
     if (!toc) return;
@@ -21,7 +20,6 @@ export class TncComponent {
     });
   }
 
-  // Example dynamic progress bar
   updateProgressBar(progress: number) {
     const progressBar = document.getElementById('progress-bar') as HTMLElement;
     if (progressBar) {
@@ -29,7 +27,6 @@ export class TncComponent {
     }
   }
 
-  // Debounce helper function
   debounce(func: (...args: any[]) => void, wait: number) {
     let timeout: NodeJS.Timeout;
     return (...args: any[]) => {
@@ -37,8 +34,6 @@ export class TncComponent {
       timeout = setTimeout(() => func(...args), wait);
     };
   }
-
-  // Example search functionality
   searchSections(searchTerm: string, sections: HTMLElement[]) {
     const regex = new RegExp(`.{0,50}${searchTerm}.{0,50}`, 'gi');
     const results = sections

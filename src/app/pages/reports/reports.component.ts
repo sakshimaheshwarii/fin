@@ -31,11 +31,11 @@ export class ReportsComponent {
         return entryDate >= start && entryDate <= end;
       });
     } else {
-      this.filteredEntries = [...this.reportEntries]; // Reset to all entries
+      this.filteredEntries = [...this.reportEntries];
     }
   }
 
   public goBack(): void {
-    this.router.navigate(['/admin']); // Navigate back to the admin dashboard
+    this.router.navigate(['/admin']); 
   }
 }

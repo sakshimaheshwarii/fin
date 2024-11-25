@@ -20,9 +20,8 @@ export class ResetPasswordComponent {
       return;
     }
 
-    // Simulate password reset (replace with real API call)
     this.toastr.success('Password has been successfully reset!');
-    this.router.navigate(['/reset-password']); // Redirect to login after reset
+    this.router.navigate(['/reset-password']);
   }
 
   passwordsMismatch(): boolean {

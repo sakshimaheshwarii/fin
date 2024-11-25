@@ -44,17 +44,15 @@ import { ToastrService } from 'ngx-toastr';
 export class WelcomeComponent implements OnInit {
   isDarkMode = false;
   hoveredButton = '';
-  service: any = {}; // Initialize the service object to avoid undefined error
+  service: any = {};
   constructor(private dialog: MatDialog, private router: Router, private toastr:ToastrService) {}
 
   ngOnInit() {
-    // Check system preference for dark mode
     this.isDarkMode = window.matchMedia('(prefers-color-scheme: light)').matches;
 
-    // Get saved role from localStorage
     const savedRole = localStorage.getItem('selectedRole');
     if (savedRole) {
-      this.service.role = savedRole; // Set the role from localStorage
+      this.service.role = savedRole; 
     } else {
       console.log("No role found in localStorage");
     }
@@ -67,14 +65,13 @@ export class WelcomeComponent implements OnInit {
   selectRole(role: string): void {
     console.log(`Selected role: ${role}`);
     this.toastr.info(`${role} selected`);
-    this.service.role = role; // Assign the selected role
-    localStorage.setItem('selectedRole', role); // Save the role in localStorage
-    this.router.navigate(['/role']); // Navigate to the next page
+    this.service.role = role;
+    localStorage.setItem('selectedRole', role);
+    this.router.navigate(['/role']);
   }
 
 
   showWhatsNew() {
-    // Implement dialog showing new features
-    // You'll need to create a separate component for this dialog
+    this.toastr.info("few changes are expected in future");
   }
 }

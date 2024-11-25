@@ -14,19 +14,19 @@ export class ContactusComponent {
       email: '',
       message: ''
     };
-  
-    constructor(private http: HttpClient, private toastr:ToastrService) {}  // <-- Inject HttpClient
-  
+
+    constructor(private http: HttpClient, private toastr:ToastrService) {}
+
     clearForm(form: NgForm): void {
       form.resetForm();
       this.contact = { name: '', email: '', message: '' };
     }
-  
+
     onSubmit(form: NgForm) {
       if (form.valid) {
         this.http.post('http://localhost:8087/api/contact', this.contact, { responseType: 'text' }).subscribe(
           (response: string) => {
-            alert(response); // Should receive the success message from Spring Boot
+            alert(response); 
             console.log('Response:', response);
             this.clearForm(form);
           },
@@ -39,6 +39,5 @@ export class ContactusComponent {
         this.toastr.error('Please fill out the form correctly.');
       }
     }
-  
+
   }
-  

@@ -1,4 +1,3 @@
-// privacy.component.ts
 import { Component } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 

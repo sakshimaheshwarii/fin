@@ -3,8 +3,7 @@ import { Component } from '@angular/core';
 interface FAQ {
   question: string;
   answer: string;
-  showAnswer?: boolean; // Optional property to track answer visibility
-}
+  showAnswer?: boolean; }
 
 @Component({
   selector: 'app-faq',

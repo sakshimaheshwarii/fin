@@ -24,7 +24,7 @@ export class OverviewComponent implements OnInit {
   loadOverviewData(): void {
     this.OverviewService.getAdminOverview().subscribe(
       (data) => {
-        console.log("Overview Data: ", data); // Log the response data
+        console.log("Overview Data: ", data);
         this.totalUsers = data.totalUsers;
         this.loanApplications = data.loanApplications;
         this.pendingApprovals = data.pendingApprovals;

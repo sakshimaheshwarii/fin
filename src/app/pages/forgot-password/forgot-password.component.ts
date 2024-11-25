@@ -21,7 +21,6 @@ export class ForgotPasswordComponent {
       this.isSubmitting = true;
       const email = form.value.email;
 
-      // Send the password reset request to the backend
       this.http.post(`http://localhost:8087/api/auth/forgot-password`, { email })
         .subscribe(
           (response: any) => {
@@ -49,7 +48,7 @@ export class ForgotPasswordComponent {
 
   getMessageClass() {
     return {
-      'error': this.message.includes('error') // or however you determine error state
+      'error': this.message.includes('error')
     };
   }
 }

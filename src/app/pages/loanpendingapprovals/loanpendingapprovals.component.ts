@@ -26,14 +26,13 @@ export class LoanPendingApprovalsComponent implements OnInit {
     this.fetchApprovals();
   }
 
-  // Fetch approvals from backend
   fetchApprovals(): void {
     this.http.get<any[]>('http://localhost:8087/api/approvals').subscribe(
       (data) => {
         this.approvals = data;
         this.filteredApprovals.data = this.approvals;
         this.filteredApprovals.paginator = this.paginator;
-        this.applyFilter(); // Apply filter after fetching data
+        this.applyFilter(); 
       },
       (error) => {
         console.error('Failed to fetch approvals:', error);
@@ -46,7 +45,6 @@ export class LoanPendingApprovalsComponent implements OnInit {
     this.location.back();
   }
 
-  // Filter approvals based on search term and selected status
   applyFilter(): void {
     const searchLower = this.searchTerm.trim().toLowerCase();
     const statusFilter = this.selectedStatus;
@@ -61,16 +59,15 @@ export class LoanPendingApprovalsComponent implements OnInit {
       return matchesSearchTerm && matchesStatus;
     });
 
-    this.filteredApprovals.paginator = this.paginator; // Update paginator after filtering
+    this.filteredApprovals.paginator = this.paginator;
   }
 
-  // Approve a specific request
   approve(approval: any): void {
     this.http.post(`http://localhost:8087/api/approvals/${approval.id}/approve`, {}).subscribe(
       () => {
         approval.status = 'Approved';
         this.toastr.info(`${approval.name}'s request has been approved.`);
-        this.applyFilter(); // Reapply filter to update the table view
+        this.applyFilter();
       },
       (error) => {
         console.error('Approval failed:', error);
@@ -79,13 +76,12 @@ export class LoanPendingApprovalsComponent implements OnInit {
     );
   }
 
-  // Reject a specific request
   reject(approval: any): void {
     this.http.post(`http://localhost:8087/api/approvals/${approval.id}/reject`, {}).subscribe(
       () => {
         approval.status = 'Rejected';
         this.toastr.info(`${approval.name}'s request has been rejected.`);
-        this.applyFilter(); // Reapply filter to update the table view
+        this.applyFilter();
       },
       (error) => {
         console.error('Rejection failed:', error);

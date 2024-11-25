@@ -1,56 +1,6 @@
-// import { Injectable } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
-// import { Observable } from 'rxjs';
-// // -------------------
-
-
-// // src/app/services/loan.service.ts
-// import { Loan } from '../models/loan.model'; // Import your Loan model
-
-
-
-// // -------------------
-// @Injectable({
-//   providedIn: 'root',
-// })
-// export class LoanService {
-//   router: any;
-//   currentRole: string = '';
-
-//     private apiUrl = 'http://localhost:5433/api/loans'; // Update with your API URL
-
-
-//   getApprovedLoans(): Observable<Loan[]> {
-//       return this.http.get<Loan[]>(`${this.apiUrl}/approved`);
-//     }
-
-//   constructor(private http: HttpClient) {
-//   }
-
-//   createLoanApplication(): Observable<any> {
-//     return this.http.post('/api/loans', {});
-//   }
-
-//   getLoanStatus(): Observable<any> {
-//     return this.http.get('/api/loans/status');
-//   }
-
-//   getLoanHistory(): Observable<any[]> {
-//     return this.http.get<any[]>('/api/loans/history');
-//   }
-
-//   resolveLoanIssues(): Observable<any> {
-//     return this.http.post('/api/loans/issues/resolve', {});
-//   }
-
-// }
-
-
-// -------------------------------------------
-// loan.service.ts
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Loan } from '../models/loan.model'; // Import your Loan model
+import { Loan } from '../models/loan.model';
 
 @Injectable({
   providedIn: 'root',
@@ -68,7 +18,6 @@ export class LoanService {
       id: 2, amount: 10000, borrower: 'Bob', status: 'pending',
       interestRate: 6
     },
-    // ... other loans
   ];
 
   private loansSubject = new BehaviorSubject<Loan[]>(this.loans);

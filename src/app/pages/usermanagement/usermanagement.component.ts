@@ -61,10 +61,8 @@ export class UserManagementComponent implements OnInit {
     const filterValue = this.searchTerm.trim().toLowerCase();
 
     if (!filterValue) {
-      // If there's no search term, show all users
       this.filteredUsers.data = [...this.users];
     } else {
-      // Filter users with null/undefined checks
       this.filteredUsers.data = this.users.filter(user => {
         const username = user.username ? user.username.toLowerCase() : '';
         const email = user.email ? user.email.toLowerCase() : '';

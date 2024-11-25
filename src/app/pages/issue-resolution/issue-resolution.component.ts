@@ -62,7 +62,6 @@ export class IssueResolutionComponent implements OnInit {
   constructor(public dialog: MatDialog, private location: Location, private http: HttpClient, private toastr:ToastrService) {}
 
   ngOnInit() {
-    // Any other initialization logic
   }
 
   openIssueDialog(issue: any) {
@@ -91,7 +90,7 @@ export class IssueResolutionComponent implements OnInit {
   }
 
   onImageError(event: any) {
-    event.target.src = 'assets/icons/loan_disapproval.jpg'; // Fallback image on error
+    event.target.src = 'assets/icons/loan_disapproval.jpg';
   }
 
   closeDetails() {

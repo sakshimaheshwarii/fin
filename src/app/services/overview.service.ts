@@ -6,11 +6,10 @@ import { Observable } from 'rxjs';
 })
 export class OverviewService {
 
-  private baseUrl = 'http://localhost:8087/api'; // Your backend URL
+  private baseUrl = 'http://localhost:8087/api'; 
 
   constructor(private http: HttpClient) {}
 
-  // Fetch admin dashboard overview data
   getAdminOverview(): Observable<any> {
     return this.http.get(`${this.baseUrl}/admin/overview`);
   }}

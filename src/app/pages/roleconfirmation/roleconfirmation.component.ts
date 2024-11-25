@@ -15,9 +15,9 @@ export class RoleconfirmationComponent {
 
   closeDialog(isConfirmed: boolean): void {
     if (isConfirmed) {
-      this.router.navigate(['/register']); // Navigate to the register page
+      this.router.navigate(['/register']);
     } else {
-      this.router.navigate(['/login']); // Close the dialog without navigating
+      this.router.navigate(['/login']); 
     }
   }
 }

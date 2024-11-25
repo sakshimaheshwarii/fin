@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';  // <-- Import HttpClient
+import { HttpClient } from '@angular/common/http';  
 import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-contact',
@@ -14,7 +14,7 @@ export class ContactComponent {
     message: ''
   };
 
-  constructor(private http: HttpClient, private toastr:ToastrService) {}  // <-- Inject HttpClient
+  constructor(private http: HttpClient, private toastr:ToastrService) {}
 
   clearForm(form: NgForm): void {
     form.resetForm();
@@ -25,7 +25,7 @@ export class ContactComponent {
     if (form.valid) {
       this.http.post('http://localhost:8087/api/contact', this.contact, { responseType: 'text' }).subscribe(
         (response: string) => {
-          this.toastr.success(response); // Should receive the success message from Spring Boot
+          this.toastr.success(response);
           console.log('Response:', response);
           this.clearForm(form);
         },

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SettingsService } from '../../services/settings.service';
+import { Location } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -14,10 +15,9 @@ export class SettingsComponent implements OnInit {
   notificationsEnabled = false;
   autoApproveLoans = false;
 
-  constructor(private fb: FormBuilder, private settingsService: SettingsService, private toastr:ToastrService) {}
+  constructor(private fb: FormBuilder, private settingsService: SettingsService, private toastr:ToastrService, private Location:Location) {}
 
   ngOnInit(): void {
-    // Initialize form groups
     this.profileForm = this.fb.group({
       adminName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -28,7 +28,6 @@ export class SettingsComponent implements OnInit {
       maxLoanAmount: [0, Validators.required],
     });
 
-    // Load initial settings
     this.loadSettings();
   }
 
@@ -65,15 +64,12 @@ export class SettingsComponent implements OnInit {
 
   toggleNotifications(enabled: boolean): void {
     this.notificationsEnabled = enabled;
-    // Save preference to the backend if needed
   }
 
   toggleAutoApproveLoans(enabled: boolean): void {
     this.autoApproveLoans = enabled;
-    // Save preference to the backend if needed
   }
 
   goBack(): void {
-    // Navigation logic here
-  }
+this.Location.back();  }
 }

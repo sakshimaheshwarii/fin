@@ -12,13 +12,11 @@ export class AuthGuard  {
     if (this.authService.isLoggedIn()) {
       const role = this.authService.getRole();
 
-      // Check route and role
       if (role === 'admin' && route.routeConfig?.path === 'admin') {
-        return true; // Admin can access the admin route
+        return true;
       } else if (role === 'user' && route.routeConfig?.path === 'user/home') {
-        return true; // User can access user home
+        return true;
       } else {
-        // Redirect based on role if they don't match the route
         if (role === 'admin') {
           this.router.navigate(['/admin']);
         } else {
@@ -27,7 +25,6 @@ export class AuthGuard  {
         return false;
       }
     } else {
-      // Not logged in, redirect to home
       this.router.navigate(['/home']);
       return false;
     }

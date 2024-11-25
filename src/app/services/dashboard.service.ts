@@ -6,7 +6,7 @@ import { catchError, Observable, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class DashboardService {
-  private apiUrl = 'http://localhost:8087/api/dashboard/stats';  // Replace with your backend URL
+  private apiUrl = 'http://localhost:8087/api/dashboard/stats';
 
   constructor(private http: HttpClient) {}
 

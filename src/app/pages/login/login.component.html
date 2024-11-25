@@ -16,11 +16,6 @@
 <div class="wave wave-2"></div>
 
 <div class="login-container">
-  <!-- Image Section -->
-  <!-- <div class="image-container">
-    <img src="assets/login.jpg" alt="Login Image" class="login-image" />
-  </div> -->
-
   <mat-card class="login-card">
     <h2>Login to ResolveX</h2>
 
@@ -57,10 +52,10 @@
   for (let i = 0; i < 12; i++) {
     const particle = document.createElement('div');
     particle.classList.add('particle');
-    const size = Math.random() * 20 + 10; // Random size between 10px and 30px
-    const positionX = Math.random() * 100; // Random X position
-    const positionY = Math.random() * 100; // Random Y position
-    const duration = Math.random() * 20 + 10; // Random float duration
+    const size = Math.random() * 20 + 10;
+    const positionX = Math.random() * 100;
+    const positionY = Math.random() * 100;
+    const duration = Math.random() * 20 + 10;
 
     particle.style.width = `${size}px`;
     particle.style.height = `${size}px`;

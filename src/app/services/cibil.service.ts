@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CibilService {
-  private apiUrl = 'http://localhost:8087/api/cibil'; // Adjust the backend URL as necessary
+  private apiUrl = 'http://localhost:8087/api';
 
   constructor(private http: HttpClient) {}
 
@@ -18,7 +18,7 @@ export class CibilService {
     return this.http.post<any>(`${this.apiUrl}/save-score`, { userId, score, status });
   }
 
-  getUserCibilScore(userId: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/user/${userId}/score`);
+  getCibilScore(userId: number): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/${userId}`);
   }
 }

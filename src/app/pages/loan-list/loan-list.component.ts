@@ -1,6 +1,5 @@
-// src/app/pages/loan-list/loan-list.component.ts
 import { Component, OnInit } from '@angular/core';
-import { LoanListService } from '../../services/loanlist.service';  // Make sure the path is correct
+import { LoanListService } from '../../services/loanlist.service'; 
 import { Loan } from '../../models/loan.model';
 
 @Component({
@@ -21,12 +20,12 @@ export class LoanListComponent implements OnInit {
   fetchApprovedLoans(): void {
     this.loanListService.getApprovedLoans().subscribe(
       (data: Loan[]) => {
-        this.loans = data; // Assign the fetched data to loans
-        this.loading = false; // Set loading to false after data is fetched
+        this.loans = data;
+        this.loading = false;
       },
       (error) => {
-        console.error('Error fetching approved loans:', error); // Log the actual error
-        this.loading = false; // Set loading to false in case of error
+        console.error('Error fetching approved loans:', error);
+        this.loading = false;
       }
     );
   }

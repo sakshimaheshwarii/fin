@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 // import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-// Angular Material Modules
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
@@ -59,7 +58,6 @@ import { ScoreComponent } from './pages/score/score.component';
 import { LoanListComponent } from './pages/loan-list/loan-list.component';
 
 
-// Services & Guards
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './services/auth.service';
@@ -76,7 +74,6 @@ import { ChartModule } from '@syncfusion/ej2-angular-charts';
 // import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
-// Application Routes
 const appRoutes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   { path: 'welcome', component: WelcomeComponent },
@@ -182,7 +179,9 @@ const appRoutes: Routes = [
   ],
   providers: [AuthService, LoanService, AuthGuard, { provide: MAT_DIALOG_DATA, useValue: {} }, {
     provide: MatDialogRef,
-    useValue: {}
+    useValue: {},
+    useClass: AuthInterceptor,
+    multi: true
   }],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

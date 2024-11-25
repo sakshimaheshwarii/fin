@@ -7,12 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ResolveX: Loan Origination System';
-  loading: boolean = true; // Start with loading true
+  loading: boolean = true;
 
-  // Simulate loading (e.g., when the app initializes)
   constructor() {
     setTimeout(() => {
-      this.loading = false; // Hide preloader after 3 seconds
-    }, 3000); // Adjust time as necessary
+      this.loading = false;
+    }, 3000); 
   }
 }

@@ -21,7 +21,7 @@ export class LoanCalculatorComponent {
   amount!: number;
   rate!: number;
   term!: number;
-  frequency: string = 'monthly'; // Default payment frequency
+  frequency: string = 'monthly'; 
   emi: number | null = null;
   showSchedule: boolean = false;
   schedule: EMISchedule[] = [];
@@ -46,7 +46,6 @@ export class LoanCalculatorComponent {
     let adjustedTerm = this.term;
     let adjustedRate = interestRate;
 
-    // Adjust rate and term based on payment frequency
     switch (this.frequency) {
       case 'quarterly':
         adjustedTerm = Math.ceil(this.term / 3);
@@ -86,8 +85,8 @@ export class LoanCalculatorComponent {
         principal: principal,
         interest: interest,
         total: this.emi!,
-        remaining: Math.max(balance, 0), // Remaining balance
-        paid: false, // Payment status
+        remaining: Math.max(balance, 0),
+        paid: false,
       });
     }
   }
@@ -97,7 +96,6 @@ export class LoanCalculatorComponent {
   }
 
   goBack(): void {
-    // Navigate safely using Angular router
     this.location.back();
   }
 }

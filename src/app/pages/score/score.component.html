@@ -48,7 +48,7 @@
 
   <div *ngIf="step === 1 && showPersonalInfo" class="form-step">
     <h3>Step 1: Bank Details</h3>
-    <form [formGroup]="userForm" (ngSubmit)="nextStep()">
+    <form [formGroup]="userForm">
       <label for="bankName">Select Bank:</label>
       <select formControlName="bankName" required>
         <option value="">Select your bank</option>
@@ -65,7 +65,7 @@
     </form>
   </div>
 
-  <div *ngIf="step === 2" class="form-step">
+  <!-- <div *ngIf="step === 2" class="form-step">
     <h3>Step 2: Enter OTP</h3>
     <form [formGroup]="userForm" (ngSubmit)="fetchDetails()">
       <label>OTP:</label>
@@ -74,4 +74,4 @@
       <button type="submit" [disabled]="userForm.get('otp')?.invalid">Fetch Account Details</button>
     </form>
   </div>
-</div>
+</div> -->

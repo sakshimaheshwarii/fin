@@ -13,14 +13,12 @@ interface LoanAggregator {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
   animations: [
-    // Fade in animation
     trigger('fadeInDown', [
       transition(':enter', [
         style({ transform: 'translateY(-20px)', opacity: 0 }),
         animate('0.5s ease-out', style({ transform: 'translateY(0)', opacity: 1 }))
       ])
     ]),
-    // Action cards animation
     trigger('cardStagger', [
       transition('* => *', [
         query(':enter', [
@@ -31,13 +29,11 @@ interface LoanAggregator {
         ], { optional: true })
       ])
     ]),
-    // Notification badge animation
     trigger('badgePulse', [
       state('active', style({ transform: 'scale(1)' })),
       state('inactive', style({ transform: 'scale(0.95)' })),
       transition('active <=> inactive', animate('0.3s ease-in-out'))
     ]),
-    // Dashboard cards animation
     trigger('dashboardCards', [
       transition(':enter', [
         query('.card', [
@@ -104,7 +100,7 @@ export class DashboardComponent implements OnInit {
     'Missing Documentation'
   ];
 
-  constructor(private router: Router) {} // Inject Router
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     console.log('Dashboard loaded with notifications:', this.notifications);
@@ -119,22 +115,22 @@ export class DashboardComponent implements OnInit {
   }
 
   startNewLoan(): void {
-    this.router.navigate(['/new-loan']); // Navigate to New Loan Application
+    this.router.navigate(['/new-loan']);
   }
 
   trackLoanStatus(): void {
-    this.router.navigate(['/loan-status']); // Navigate to Track Loan Status
+    this.router.navigate(['/loan-status']);
   }
 
   viewLoanHistory(): void {
-    this.router.navigate(['/loan-history']); // Navigate to Loan History
+    this.router.navigate(['/loan-history']);
   }
 
   resolveIssues(): void {
-    this.router.navigate(['/resolve-issues']); // Navigate to Resolve Issues
+    this.router.navigate(['/resolve-issues']);
   }
 
   openLoanCalculator(): void {
-    this.router.navigate(['/loan-calculator']); // Navigate to Loan Calculator
+    this.router.navigate(['/loan-calculator']); 
   }
 }

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class LoanHistoryService {
-  private apiUrl = 'http://localhost:8087/api/loan-history'; // Update with your actual API endpoint
+  private apiUrl = 'http://localhost:8087/api/loan-history';
 
   constructor(private http: HttpClient) {}
 

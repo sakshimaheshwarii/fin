@@ -21,7 +21,6 @@ export class RegisterComponent {
 
 
   constructor(private authService: AuthService, private router: Router) {
-    // this.role = this.authService.role;
     console.log("role: ", this.role);
 
   }
@@ -37,22 +36,20 @@ export class RegisterComponent {
       this.authService.registerAdmin(this.user.name, this.user.username, this.user.email, this.user.password).subscribe({
         next: (response) => {
           console.log('Admin registered successfully', response);
-          this.router.navigate(['/admin']); // Adjust the route if necessary
+          this.router.navigate(['/admin']);
         },
         error: (err) => {
           console.error('Admin registration failed', err);
-          // Display an error message to the user if needed
         }
       });
     } else if (localStorage.getItem('selectedRole') === 'user') {
       this.authService.registerUser(this.user.name, this.user.username, this.user.email, this.user.password).subscribe({
         next: (response) => {
           console.log('User registered successfully', response);
-          this.router.navigate(['/user/home']); // Adjust the route if necessary
+          this.router.navigate(['/user/home']);
         },
         error: (err) => {
           console.error('User registration failed', err);
-          // Display an error message to the user if needed
         }
       });
     } else {

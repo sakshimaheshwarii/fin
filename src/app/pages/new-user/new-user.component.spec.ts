@@ -10,7 +10,6 @@ describe('RegisterComponent', () => {
   let fixture: ComponentFixture<RegisterComponent>;
   let authService: AuthService; // Declare AuthService variable
 
-  // Mock AuthService
   const mockAuthService = {
     register: jasmine.createSpy('register').and.returnValue(of({ token: 'dummy-token' })), // Simulate successful registration
   };
@@ -30,12 +29,12 @@ describe('RegisterComponent', () => {
 
     fixture = TestBed.createComponent(RegisterComponent);
     component = fixture.componentInstance;
-    authService = TestBed.inject(AuthService); // Inject the AuthService
+    authService = TestBed.inject(AuthService);
     fixture.detectChanges();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy(); // Check if the component is created successfully
+    expect(component).toBeTruthy();
   });
 
   it('should call AuthService.register on form submission', () => {
@@ -45,23 +44,23 @@ describe('RegisterComponent', () => {
       username: 'testuser',
       password: 'password123',
     };
-    const form = { valid: true }; // Simulate a valid form
+    const form = { valid: true };
     component.onRegister(form as any);
-    expect(authService.register).toHaveBeenCalledWith(component.user); // Verify the service was called with the user data
+    expect(authService.register).toHaveBeenCalledWith(component.user);
   });
 
   it('should navigate to dashboard after successful registration', () => {
-    const navigateSpy = spyOn((component as any).router, 'navigate'); // Spy on the router's navigate method
+    const navigateSpy = spyOn((component as any).router, 'navigate');
     const form = { valid: true };
     component.onRegister(form as any);
-    expect(navigateSpy).toHaveBeenCalledWith(['/dashboard']); // Verify redirection
+    expect(navigateSpy).toHaveBeenCalledWith(['/dashboard']);
   });
 
   it('should show an alert on registration failure', () => {
-    (authService.register as jasmine.Spy).and.returnValue(throwError('Registration failed')); // Simulate an error
-    spyOn(window, 'alert'); // Spy on alert
+    (authService.register as jasmine.Spy).and.returnValue(throwError('Registration failed'));
+    spyOn(window, 'alert');
     const form = { valid: true };
     component.onRegister(form as any);
-    expect(window.alert).toHaveBeenCalledWith('Registration failed. Please try again.'); // Check if alert is shown
+    expect(window.alert).toHaveBeenCalledWith('Registration failed. Please try again.');
   });
 });

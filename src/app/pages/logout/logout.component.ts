@@ -1,4 +1,3 @@
-// logout.component.ts
 import { Component, ViewChild, TemplateRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -14,7 +13,7 @@ export class LogoutComponent {
   rating: number = 0;
   feedback: string = '';
   submitted: boolean = false;
-  stars: boolean[] = Array(5).fill(false); // Array for star rating
+  stars: boolean[] = Array(5).fill(false);
 
 
   constructor(private dialog: MatDialog, private router: Router, private toastr:ToastrService) {}
@@ -49,14 +48,14 @@ export class LogoutComponent {
   }
 
   closeDialog() {
-    this.dialog.closeAll(); // Close the dialog
+    this.dialog.closeAll();
   }
 
   goToWelcome() {
-    this.router.navigate(['/welcome']); // Redirect to welcome page
+    this.router.navigate(['/welcome']);
   }
 
   goToHome() {
-    this.router.navigate(['/user/home']); // Redirect to home page
+    this.router.navigate(['/user/home']);
   }
 }

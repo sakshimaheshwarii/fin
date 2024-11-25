@@ -30,16 +30,15 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { RoleconfirmationComponent } from './pages/roleconfirmation/roleconfirmation.component';
-import { HomeDefaultComponent } from './pages/home-default/home-default.component'; // Ensure this is correct
+import { HomeDefaultComponent } from './pages/home-default/home-default.component';
 
 const routes: Routes = [
-  // Correct the redirect path and add pathMatch
-  { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect to welcome page
-  { path: 'welcome', component: WelcomeComponent },  // Add Welcome route
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'welcome', component: WelcomeComponent },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'user/home', component: DashboardComponent },
-  { path: 'profile', component: ProfileComponent,}, // Protect the profile route
+  { path: 'profile', component: ProfileComponent,},
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'service', component: ServiceComponent },
@@ -67,8 +66,6 @@ const routes: Routes = [
 {path:'role', component:RoleconfirmationComponent},
 {path:'home', component:HomeDefaultComponent},
 
-  // Optionally add a wildcard route to catch any undefined paths
-  // { path: '**', redirectTo: '/welcome' } // Catch-all for undefined routes
 ];
 
 @NgModule({

@@ -42,9 +42,8 @@ export class AdminComponent implements OnInit {
   }
 
   logout(): void {
-    // Implement logout logic here
     this.router.navigate(['/logout']);
     this.toastr.info("You are logging Out!");
   }
-  
+
 }

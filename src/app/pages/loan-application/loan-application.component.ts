@@ -1,4 +1,3 @@
-// loan-application.component.ts
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Location } from '@angular/common';
@@ -17,7 +16,6 @@ export class LoanApplicationComponent {
   userCaptchaAnswer!: number;
   captchaError: boolean = false;
 
-  // New properties to handle loan ID and messages
   loanId: string | null = null;
   successMessage: string | null = null;
   errorMessage: string | null = null;
@@ -26,12 +24,11 @@ export class LoanApplicationComponent {
     this.generateCaptcha();
   }
 
-  // Handles the file selection for collateral document
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input?.files?.length) {
       const file = input.files[0];
-      if (file.size > 10 * 1024 * 1024) { // Example: 10MB size limit
+      if (file.size > 10 * 1024 * 1024) { 
         this.toastr.info('File size exceeds the 10MB limit.');
         return;
       }
@@ -39,16 +36,14 @@ export class LoanApplicationComponent {
     }
   }
 
-  // Navigate back to the previous page
   goBack(): void {
     this.location.back();
   }
 
-  // Generates a simple math captcha
   generateCaptcha(): void {
     const operations = ['+', '-', '*'];
     const num1 = Math.floor(Math.random() * 10) + 1;
-    const num2 = Math.floor(Math.random() * num1); // Ensure num2 <= num1
+    const num2 = Math.floor(Math.random() * num1);
     const operation = operations[Math.floor(Math.random() * operations.length)];
 
     switch (operation) {
@@ -65,7 +60,6 @@ export class LoanApplicationComponent {
     this.captchaQuestion = `${num1} ${operation} ${num2} = ?`;
   }
 
-  // Handles the loan application submission
   submitLoanApplication(form: NgForm): void {
     this.successMessage = null;
     this.errorMessage = null;
@@ -103,16 +97,14 @@ export class LoanApplicationComponent {
     }
   }
 
-  // Clears the form and resets the component state
   clearForm(form: NgForm): void {
     form.resetForm();
     this.collateralDocument = null;
     this.userCaptchaAnswer = 0;
-    this.generateCaptcha(); // Generate a new captcha after submission
+    this.generateCaptcha();
   }
 }
 
-// Define the response interfaces
 interface LoanApplicationResponse {
   loanId: string;
   message: string;
