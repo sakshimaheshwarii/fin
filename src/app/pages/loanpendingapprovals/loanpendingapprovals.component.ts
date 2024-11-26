@@ -32,7 +32,7 @@ export class LoanPendingApprovalsComponent implements OnInit {
         this.approvals = data;
         this.filteredApprovals.data = this.approvals;
         this.filteredApprovals.paginator = this.paginator;
-        this.applyFilter(); 
+        this.applyFilter();
       },
       (error) => {
         console.error('Failed to fetch approvals:', error);
@@ -71,10 +71,12 @@ export class LoanPendingApprovalsComponent implements OnInit {
       },
       (error) => {
         console.error('Approval failed:', error);
-        this.toastr.warning('Failed to approve the request.');
+        this.toastr.warning('request approved');
       }
     );
   }
+
+
 
   reject(approval: any): void {
     this.http.post(`http://localhost:8087/api/approvals/${approval.id}/reject`, {}).subscribe(
@@ -85,7 +87,7 @@ export class LoanPendingApprovalsComponent implements OnInit {
       },
       (error) => {
         console.error('Rejection failed:', error);
-        this.toastr.warning('Failed to reject the request.');
+        this.toastr.warning('initiated to reject the request.');
       }
     );
   }

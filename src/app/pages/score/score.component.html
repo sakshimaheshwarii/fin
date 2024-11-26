@@ -1,7 +1,6 @@
 <div class="cibil-container">
   <h1>CIBIL Score Data Table</h1>
 
-  <!-- CIBIL Score Table -->
   <table class="cibil-score-table">
     <thead>
       <tr>
@@ -64,14 +63,3 @@
       <button type="submit" [disabled]="userForm.invalid">Next</button>
     </form>
   </div>
-
-  <!-- <div *ngIf="step === 2" class="form-step">
-    <h3>Step 2: Enter OTP</h3>
-    <form [formGroup]="userForm" (ngSubmit)="fetchDetails()">
-      <label>OTP:</label>
-      <input type="text" formControlName="otp" />
-
-      <button type="submit" [disabled]="userForm.get('otp')?.invalid">Fetch Account Details</button>
-    </form>
-  </div>
-</div> -->

@@ -1,7 +1,6 @@
 <div class="pending-approvals">
   <h2>Pending Approvals</h2>
 
-  <!-- Search and Filter -->
   <div class="search-filter-container">
     <mat-form-field appearance="fill" class="search-field">
       <mat-label>Search Approvals</mat-label>
@@ -19,33 +18,27 @@
     </mat-form-field>
   </div>
 
-  <!-- Approvals Table -->
   <table mat-table [dataSource]="filteredApprovals" class="mat-elevation-z8" matSort>
-    <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
       <td mat-cell *matCellDef="let approval">{{ approval.name }}</td>
     </ng-container>
 
-    <!-- Type Column -->
     <ng-container matColumnDef="type">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
       <td mat-cell *matCellDef="let approval">{{ approval.type }}</td>
     </ng-container>
 
-    <!-- Request Date Column -->
     <ng-container matColumnDef="requestDate">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Request Date</th>
       <td mat-cell *matCellDef="let approval">{{ approval.requestDate | date }}</td>
     </ng-container>
 
-    <!-- Status Column -->
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef>Status</th>
       <td mat-cell *matCellDef="let approval">{{ approval.status }}</td>
     </ng-container>
 
-    <!-- Actions Column -->
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let approval">
@@ -54,12 +47,10 @@
       </td>
     </ng-container>
 
-    <!-- Table Header and Rows -->
     <tr mat-header-row *matHeaderRowDef="columns"></tr>
     <tr mat-row *matRowDef="let row; columns: columns"></tr>
   </table>
 
-  <!-- Pagination -->
   <mat-paginator
     [pageSize]="5"
     [length]="filteredApprovals.data.length"
@@ -67,7 +58,6 @@
     (page)="paginator.pageIndex = $event.pageIndex">
   </mat-paginator>
 
-  <!-- No Approvals Message -->
   <ng-template #noApprovals>
     <p class="no-approvals-msg">No pending approvals at the moment.</p>
   </ng-template>

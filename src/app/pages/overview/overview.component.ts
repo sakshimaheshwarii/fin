@@ -42,7 +42,7 @@ export class OverviewComponent implements OnInit {
   }
 
   manageUsers(): void {
-    this.router.navigate(['/admin/manage-users']);
+    this.router.navigate(['/admin/user-management']);
   }
 
   goBack(): void {

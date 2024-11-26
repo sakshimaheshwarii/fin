@@ -1,37 +1,31 @@
 <div class="welcome-container" [ngClass]="{ 'dark-mode': isDarkMode }">
 
-  <!-- Theme Toggle -->
   <div class="theme-toggle">
     <button mat-icon-button (click)="toggleTheme()">
       <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
     </button>
   </div>
 
-  <!-- Background Elements -->
   <div class="animated-circles">
     <div class="circle"></div>
     <div class="circle"></div>
     <div class="circle"></div>
   </div>
 
-  <!-- Main Content Card -->
   <div class="content-card" [@fadeInUp]>
 
-    <!-- Logo Section -->
     <div class="logo-section">
       <div class="logo">
         <mat-icon>account_balance</mat-icon>
       </div>
     </div>
 
-    <!-- Welcome Text -->
     <h1 [@titleAnimation]>Welcome to ResolveX</h1>
     <div class="subtitle-wrapper">
       <h2 [@subtitleAnimation]>Your one-stop solution for Loan Origination.</h2>
       <div class="divider"></div>
     </div>
 
-    <!-- Quick Stats -->
     <div class="stats-container" [@fadeIn]>
       <div class="stat-item">
         <mat-icon>speed</mat-icon>
@@ -50,7 +44,6 @@
       </div>
     </div>
 
-    <!-- Role Selection -->
     <div class="role-section">
       <p [@fadeIn]>Visiting As:</p>
       <div class="button-group" [@buttonAnimation]>
@@ -76,7 +69,6 @@
       </div>
     </div>
 
-    <!-- Features Preview -->
     <div class="features-preview" [@fadeIn]>
       <div class="feature">
         <mat-icon>security</mat-icon>
@@ -94,7 +86,6 @@
 
   </div>
 
-  <!-- Version Info -->
   <div class="version-info">
     <span>Version 2.0</span>
     <button mat-button color="primary" (click)="showWhatsNew()">

@@ -13,16 +13,13 @@
     <button mat-raised-button color="warn" (click)="goBack()">Return</button>
   </div>
 
-  <!-- Loading Indicator -->
   <mat-spinner *ngIf="loading" diameter="30"></mat-spinner>
 
-  <!-- Status Display -->
   <div *ngIf="loanStatus" class="status-result">
     <h3>Status: {{ loanStatus }}</h3>
     <p *ngIf="loanDetails">Details: {{ loanDetails }}</p>
   </div>
 
-  <!-- Error Message -->
   <div *ngIf="errorMessage" class="error-message">
     <mat-icon color="warn">error</mat-icon>
     <span>{{ errorMessage }}</span>

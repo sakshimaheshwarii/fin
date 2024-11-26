@@ -79,16 +79,19 @@ export class UserManagementComponent implements OnInit {
 
   onPaginateChange(event: PageEvent) {
     console.log('Page Event:', event);
+    console.log('Current Page:', event.pageIndex);
+    console.log('Page Size:', event.pageSize);
   }
+
 
   navigateToAddUser() {
     this.router.navigate(['/welcome']);
   }
 
-  editUser(user: UserManagement) {
-    this.toastr.info(`Editing ${user.username}`);
-    this.selectedUser = user;
-  }
+  // editUser(user: UserManagement) {
+  //   this.toastr.info(`Editing ${user.username}`);
+  //   this.selectedUser = user;
+  // }
 
   deleteUser(user: UserManagement) {
     if (confirm(`Are you sure you want to delete ${user.username}?`)) {

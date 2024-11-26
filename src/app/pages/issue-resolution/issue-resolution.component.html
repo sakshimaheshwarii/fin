@@ -2,7 +2,6 @@
   <h2>Resolve Issues</h2>
   <p>If your loan has been disapproved or you are facing any issues, please contact us for further assistance.</p>
 
-  <!-- Issue Description Input -->
   <mat-form-field>
     <textarea matInput placeholder="Describe your issue" [(ngModel)]="issueDescription"></textarea>
   </mat-form-field>
@@ -12,10 +11,6 @@
 
   <h3>Common Issues</h3>
 
-  <!-- Direct Button to Open "Missing Documents" Issue -->
-
-
-  <!-- Issue Cards -->
   <div class="issue-cards">
     <div *ngFor="let issue of commonIssues" class="issue-card-container">
       <img class="imgs" [src]="issue.icon" [alt]="issue.title" (error)="onImageError($event)" />
@@ -25,7 +20,6 @@
     </div>
   </div>
 
-  <!-- Details Modal -->
   <div *ngIf="selectedIssue" class="details-box-overlay">
     <div class="details-box">
       <h3>{{ selectedIssue.title }} Details</h3>

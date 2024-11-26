@@ -62,7 +62,6 @@
   border-bottom: 1px solid #f0f0f0;
 }
 
-/* Table Rows */
 .mat-row {
   transition: background-color 0.3s ease;
 }
@@ -74,7 +73,7 @@
 /* Action Buttons */
 .mat-button {
   min-width: 90px;
-  margin: 0 8px;
+  /* margin: 0 8px; */
   padding: 4px 12px;
   border-radius: 6px;
   font-weight: 500;
@@ -82,14 +81,14 @@
 }
 
 /* Edit Button */
-.mat-button:not([color="warn"]) {
+/* .mat-button:not([color="warn"]) {
   color: #4a90e2;
   background-color: rgba(74, 144, 226, 0.1);
 }
 
 .mat-button:not([color="warn"]):hover {
   background-color: rgba(74, 144, 226, 0.2);
-}
+} */
 
 /* Delete Button */
 .mat-button[color="warn"] {

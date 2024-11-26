@@ -1,5 +1,4 @@
 <div class="settings-container">
-  <!-- Profile Settings Card -->
   <mat-card class="settings-card">
     <h2>Profile Settings</h2>
     <form [formGroup]="profileForm" (ngSubmit)="onSubmitProfile()">
@@ -17,7 +16,6 @@
     </form>
   </mat-card>
 
-  <!-- Loan Parameters Card -->
   <mat-card class="settings-card">
     <h2>Loan Parameters</h2>
     <form [formGroup]="loanParametersForm" (ngSubmit)="onSubmitLoanParameters()">
@@ -35,7 +33,6 @@
     </form>
   </mat-card>
 
-  <!-- System Preferences Card -->
   <mat-card class="settings-card">
     <h2>System Preferences</h2>
     <mat-slide-toggle color="primary" [checked]="notificationsEnabled" (change)="toggleNotifications($event.checked)">
