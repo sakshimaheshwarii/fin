@@ -38,6 +38,10 @@ body {
   overflow-y: auto;
   transition: background-color 0.3s ease;
   border: 1px solid white;
+  overflow-y: scroll;
+  height: auto;
+  max-height: 100vh;
+  padding-bottom: 160px !important;
 }
 
 .faq-item {
@@ -69,7 +73,7 @@ body {
 }
 
 .faq-item.active .faq-answer {
-  max-height: 200px; 
+  max-height: 200px;
 }
 
 button.toggle-btn {

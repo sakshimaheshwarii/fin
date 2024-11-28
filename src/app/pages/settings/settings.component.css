@@ -4,6 +4,10 @@
   gap: 20px;
   padding: 20px;
   align-items: center;
+  overflow-y: scroll;
+  height: auto;
+  max-height: 100vh;
+  padding-bottom: 160px !important;
 }
 
 .settings-card {
@@ -20,4 +24,7 @@
 
 mat-slide-toggle {
   margin: 10px 0;
+}
+.return{
+  padding: 7px;
 }

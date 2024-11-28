@@ -1,18 +1,5 @@
 <div class="reports-container">
   <h1>Admin Reports</h1>
-
-  <div class="filters">
-    <label for="startDate">Start Date:</label>
-    <input type="date" id="startDate" [(ngModel)]="startDate" />
-
-    <label for="endDate">End Date:</label>
-    <input type="date" id="endDate" [(ngModel)]="endDate" />
-
-    <button mat-raised-button color="primary" (click)="generateReport()">
-      Generate Report
-    </button>
-  </div>
-
   <table mat-table [dataSource]="filteredEntries" class="mat-elevation-z8">
     <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef>Date</th>

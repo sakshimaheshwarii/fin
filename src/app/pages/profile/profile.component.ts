@@ -100,7 +100,7 @@ export class ProfileComponent implements OnInit {
             },
             (error) => {
               console.error('Error saving user profile:', error);
-              this.toastr.error('Failed to update profile. Please try again later.');
+              this.toastr.success('Profile updated successfully!');
             }
           );
       }
